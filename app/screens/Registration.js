@@ -6,10 +6,11 @@ import CustomTextInput from '../components/classComponent/CustomTextInput';
 import DropDownPicker from 'react-native-dropdown-picker';
 import Icon from 'react-native-vector-icons/Feather';
 import EllipticalButton from '../components/functionalComponent/EllipticalButton';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const { width, height } = Dimensions.get('screen')
 
-class HomeScreen extends React.Component {
+class PersonalScreen extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -26,7 +27,7 @@ class HomeScreen extends React.Component {
     }
     render() {
         return (
-            <View style={[StyleSheet.absoluteFill,{ flex: 1, alignItems: 'center',backgroundColor: 'black' }]}>
+            <View style={[StyleSheet.absoluteFill, { flex: 1, alignItems: 'center', backgroundColor: 'black' }]}>
                 <ScrollView>
                     <View style={{ paddingHorizontal: width * 0.08, paddingBottom: width * 0.15 }}>
                         <CustomTextInput
@@ -82,7 +83,7 @@ class HomeScreen extends React.Component {
                             tColor='white'
                         />
                         <View style={{ flexDirection: 'row', marginTop: width * 0.04, alignItems: 'flex-start' }}>
-                            <Text style={{ fontSize: width * 0.05, color:'white' }}>Sex</Text>
+                            <Text style={{ fontSize: width * 0.05, color: 'white' }}>Sex</Text>
                             <FlatList
                                 data={['Male', 'Female', 'Intersex']}
                                 contentContainerStyle={{ marginLeft: width * 0.05 }}
@@ -92,7 +93,7 @@ class HomeScreen extends React.Component {
                                             width: width * 0.05, height: width * 0.05, borderRadius: (width * 0.05) / 2,
                                             backgroundColor: this.state.sex === item ? 'blue' : 'white', borderColor: 'black', borderWidth: 1
                                         }} />
-                                        <Text style={{ fontSize: width * 0.05, marginLeft: width * 0.02, color:'white' }}>
+                                        <Text style={{ fontSize: width * 0.05, marginLeft: width * 0.02, color: 'white' }}>
                                             {item}
                                         </Text>
                                     </Pressable>
@@ -146,7 +147,7 @@ class HomeScreen extends React.Component {
     }
 }
 
-class SettingsScreen extends React.Component {
+class HealthScreen extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -263,11 +264,38 @@ class SettingsScreen extends React.Component {
     }
 }
 
+PersonalScreen.navigationOptions = {
+    tabBarIcon: ({ tintColor, focused }) => (
+        <Ionicons
+            name={focused ? 'ios-home' : 'md-home'}
+            color={tintColor}
+            size={25}
+        />
+    )
+}
+
+HealthScreen.navigationOptions = {
+    tabBarIcon: ({ tintColor, focused }) => (
+        <Ionicons
+            name={focused ? 'ios-person' : 'md-person'}
+            color={tintColor}
+            size={25}
+        />
+    )
+}
 const Regsitration = createMaterialTopTabNavigator({
-    Personal: HomeScreen,
-    Health: SettingsScreen,
+    Personal: PersonalScreen,
+    Health: HealthScreen,
 }, {
-    initialRouteName: 'Personal'
+    initialRouteName: 'Personal',
+    tabBarOptions: {
+        activeTintColor: 'white',
+        showIcon: true,
+        showLabel: false,
+        style: {
+            backgroundColor: 'green'
+        }
+    }
 });
 
 
@@ -295,4 +323,26 @@ const Dpicker = (props) => {
         </View>
     );
 }
-export default createAppContainer(Regsitration);
+
+const Reg = createAppContainer(Regsitration);
+
+const RegFinal = (props) => {
+    return(
+        <>
+                <View style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          backgroundColor: 'green',
+          paddingHorizontal: 18,
+          paddingTop: 5,
+        }}>
+          <Ionicons name='ios-camera' size={28} color='white' />
+          <Ionicons name='ios-menu' size={28} color='white' />
+        </View>
+        <Reg />
+        </>
+    );
+}
+
+export default RegFinal;

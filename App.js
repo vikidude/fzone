@@ -1,15 +1,16 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import AppNavigator from './AppNavigator';
 import { StatusBar, View } from 'react-native';
-import Home from  './app/screens/Home';
+import Registration from './app/screens/Registration';
+import Icon from 'react-native-vector-icons/dist/Ionicons';
 
 console.disableYellowBox = true
 export default class App extends Component {
-  render(){
-    return(
-      <View style={{flex:1}}>
-      <StatusBar backgroundColor = 'blue' animated = {true} barStyle = 'light-content' />
-      <Home />
+  render() {
+    return (
+      <View style={{ flex: 1 }}>
+        <StatusBar backgroundColor='blue' animated={true} barStyle='light-content' />
+        <Registration />
       </View>
     )
   }
