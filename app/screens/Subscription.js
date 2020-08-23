@@ -7,9 +7,9 @@ const { width, height } = Dimensions.get('screen');
 const Subscription = (props) => {
     const plans = [
         {term:'14 days',realPrice: '', offerPrice: 'Free', perMonth: '', bottomText: '',selected: true},
-        {term:'1 Year',realPrice: 3999, offerPrice: 2499, perMonth: 208, bottomText: 'Free 1 month cure.fit live membership',selected: false},
-        {term:'6 Months',realPrice: 2499, offerPrice: 1799, perMonth: 299,bottomText: 'Get 6 month Cure fit live pack at just Rs.1799',selected: false},
-        {term:'3 Months',realPrice: 1749, offerPrice: 1099, perMonth: 366,bottomText: 'Get 3 month Cure fit live pack at just Rs.1099',selected: false},
+        {term:'1 Year',realPrice: 3999, offerPrice: 2499, perMonth: 208, bottomText: 'Free 1 month TFZ live membership',selected: false},
+        {term:'6 Months',realPrice: 2499, offerPrice: 1799, perMonth: 299,bottomText: 'Get 6 month TFZ live pack at just Rs.1799',selected: false},
+        {term:'3 Months',realPrice: 1749, offerPrice: 1099, perMonth: 366,bottomText: 'Get 3 month TFZ live pack at just Rs.1099',selected: false},
     ]
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: 'black' }}>
@@ -62,7 +62,7 @@ const Subscription = (props) => {
                     <Text>299/mon</Text>
                     </View>
                 </View>
-                <Text>Get 6 month Cure fit live pack at just Rs.1799 | <Text style={{textDecorationLine:'underline'}}>+1 offers</Text></Text>
+                <Text>Get 6 month TFZ live pack at just Rs.1799 | <Text style={{textDecorationLine:'underline'}}>+1 offers</Text></Text>
                 <View style={{borderBottomWidth:1, width: width * 0.8, borderBottomColor:'black'}} /> */}
 
                 {/* <View style={{flexDirection:'row',justifyContent:'space-between', paddingVertical: height * 0.04}}>
@@ -72,7 +72,7 @@ const Subscription = (props) => {
                     <Text>366/mon</Text>
                     </View>
                 </View>
-                <Text>Get 3 month Cure fit live pack at just Rs.1099 | <Text style={{textDecorationLine:'underline'}}>+1 offers</Text></Text> */}
+                <Text>Get 3 month TFZ live pack at just Rs.1099 | <Text style={{textDecorationLine:'underline'}}>+1 offers</Text></Text> */}
         </SafeAreaView>
     );
 }

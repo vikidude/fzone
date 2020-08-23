@@ -7,7 +7,9 @@ import Settings from './app/screens/Settings';
 import LeaderBoard from './app/screens/LeaderBoard';
 import Subscription from './app/screens/Subscription';
 import Workout from './app/screens/Workout';
-
+import Home from './app/screens/Home';
+import Test from './app/screens/Test';
+import Test1 from './app/screens/Test1';
 
 const StackNavigator = createStackNavigator({
     Login: {
@@ -33,10 +35,19 @@ const StackNavigator = createStackNavigator({
     },
     Workout: {
         screen: Workout
+    },
+    Home: {
+        screen: Home
+    },
+    Test: {
+        screen: Test
+    },
+    Test1: {
+        screen: Test1
     }
 }, {
     initialRouteName: 'Login',
-    headerMode: "none"
+    headerMode: 'none'
 })
 
 const AppContainer = createAppContainer(StackNavigator);

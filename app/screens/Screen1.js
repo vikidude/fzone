@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { View, Text, Dimensions, StyleSheet, Image, TouchableOpacity, } from 'react-native';
+import { View, Text, Dimensions, StyleSheet, Image, TouchableOpacity, ScrollView, } from 'react-native';
 import CustomTextInput from '../components/classComponent/CustomTextInput';
 const { width, height } = Dimensions.get('screen');
 import EllipticalButton from '../components/functionalComponent/EllipticalButton';
-import { google_icon, fb_icon, mail_icon, fzone_logo } from '../consts/images';
+import { google_icon, fb_icon, mail_icon, fzone_logo, tfz_black_logo } from '../consts/images';
 
 class Screen1 extends Component {
     constructor(props) {
@@ -20,9 +20,10 @@ class Screen1 extends Component {
         const mail = mail_icon
         return (
             <View style={[StyleSheet.absoluteFill, { flex: 1, backgroundColor: 'lightgrey' }]}>
-                <Image source={fzone_logo}
-                    style={{ width: width * 0.6, height: height * 0.3, alignSelf: 'center' }}
-                />
+                <ScrollView>
+                <View style={{ alignItems: 'center', width: width, marginVertical: height * 0.09 }}>
+                    <Image source={tfz_black_logo} style={{ width: width * 0.6, height: width * 0.25 }} />
+                </View>
                 <View style={{ paddingHorizontal: width * 0.08, }}>
                     <Text style={{ position: 'absolute', left: width * 0.08, top: width * 0.12, fontSize: width * 0.05, color: 'black' }}>+91 </Text>
                     <CustomTextInput
@@ -40,7 +41,7 @@ class Screen1 extends Component {
                 </View>
                 <View style={{ marginTop: width * 0.09, paddingHorizontal: width * 0.08 }}>
                     <EllipticalButton
-                        ellipticClick={() => this.props.navigation.navigate('Settings')}
+                        ellipticClick={() => this.props.navigation.navigate('Test')}
                         width={width * 0.83}
                         height={height * 0.075}
                         btnImg={''}
@@ -82,6 +83,7 @@ class Screen1 extends Component {
                             style={{ height: 25, width: 25 }} />
                     </TouchableOpacity>
                 </View>
+                </ScrollView>
             </View>
         );
     }

@@ -1,30 +1,30 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Image, FlatList, TouchableOpacity, Pressable } from 'react-native';
+import { View, Text, StyleSheet, Image, FlatList, Dimensions, Pressable } from 'react-native';
 import Feather from 'react-native-vector-icons/dist/Feather';
 import SimpleLineIcons from 'react-native-vector-icons/dist/SimpleLineIcons';
-
+const { height, width } = Dimensions.get('screen')
 
 class Settings extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            itemSelected: 'Orders'
+            itemSelected: ''
         }
     }
 
     render() {
         const listData = [
             {
-                listName: 'Orders',
+                listName: 'LeaderBoard',
+                iconName: 'basket'
+            },
+            {
+                listName: 'Active Packs and Subscription',
                 iconName: 'basket'
             },
             {
                 listName: 'Medical Records',
                 iconName: 'heart'
-            },
-            {
-                listName: 'Active Packs and Subscription',
-                iconName: 'basket'
             },
             {
                 listName: 'Redeem Voucher',
@@ -45,47 +45,45 @@ class Settings extends Component {
         ]
         return (
             <View style={[StyleSheet.absoluteFill, { flex: 1 }]}>
-                <View style={{ flexDirection: 'row', borderBottomColor: 'lightgrey', borderBottomWidth: 1, padding: 35 }}>
-                    <Feather name="user" size={80} color="black" />
-                    <View style={{ flexDirection: 'column', marginLeft: 35, alignSelf: 'center' }}>
-                        <Text style={{ fontSize: 25, color: 'black', fontWeight: 'bold' }}>Elangovan</Text>
-                        <Text style={{ fontSize: 18, color: 'red' }}>VIEW PROFILE</Text>
+                <View style={{ flexDirection: 'row', borderBottomColor: 'lightgrey', borderBottomWidth: 1, padding: width * 0.06 }}>
+                    <Feather name="user" size={width * 0.15} color="black" />
+                    <View style={{ flexDirection: 'column', marginLeft: width * 0.06, alignSelf: 'center' }}>
+                        <Text style={{ fontSize: width * 0.06, color: 'black', fontWeight: 'bold' }}>Elangovan</Text>
+                        <Text style={{ fontSize: width * 0.04, color: 'red' }}>VIEW PROFILE</Text>
                     </View>
                 </View>
 
                 <FlatList
                     data={listData}
-                    contentContainerStyle = {{ flexGrow:1, marginVertical: 30, paddingLeft: 25,}}
+                    contentContainerStyle={{ flexGrow: 1, marginVertical: height * 0.03, paddingLeft: width * 0.06, }}
+                    showsVerticalScrollIndicator={false}
                     renderItem={({ item, index }) => (
-                        <Pressable onPress = {()=>{
-                            switch(index){
-                                case 0: this.props.navigation.navigate('Workout');
-                                break;
+                        <Pressable onPress={() => {
+                            this.setState({ itemSelected: item.listName })
+                            switch (index) {
+                                case 0: this.props.navigation.navigate('LeaderBoard');
+                                    break;
                                 case 1: this.props.navigation.navigate('Subscription');
-                                break;
-                                case 2: this.props.navigation.navigate('PersonalScreen');
-                                break;
-                                case 2: this.props.navigation.navigate('LeaderBoard');
-                                break;
-                                default: this.props.navigation.navigate('HealthScreen');
-                                break;
+                                    break;
+                                default: this.props.navigation.navigate('LeaderBoard');
+                                    break;
                             }
-                            this.setState({itemSelected: item.listName})}}
-                            style={{ flexDirection: 'row', flex: 1, justifyContent: 'space-between',paddingTop: 30 }}>
-                            <Text style={{ color: this.state.itemSelected === item.listName?'#e81c59':'black', fontSize: 23, }}>
+                        }}
+                            style={{ flexDirection: 'row', flex: 1, justifyContent: 'space-between', paddingTop: height * 0.035 }}>
+                            <Text style={{ color: this.state.itemSelected === item.listName ? '#e81c59' : 'black', fontSize: width * 0.055, }}>
                                 {item.listName}
                             </Text>
-                            {item.iconName === 'log-out'?(
-                            <Feather name={item.iconName} size={30} color= {this.state.itemSelected === item.listName?'#e81c59':'black'} style={{marginRight: 30}} />
-                            ):(
-                                <SimpleLineIcons name={item.iconName} size={30} color= {this.state.itemSelected === item.listName?'#e81c59':'black'} style={{marginRight: 30}} />  
-                            )}
+                            {item.iconName === 'log-out' ? (
+                                <Feather name={item.iconName} size={width * 0.07} color={this.state.itemSelected === item.listName ? '#e81c59' : 'black'} style={{ marginRight: width *0.05 }} />
+                            ) : (
+                                    <SimpleLineIcons name={item.iconName} size={width * 0.07} color={this.state.itemSelected === item.listName ? '#e81c59' : 'black'} style={{ marginRight: width *0.06 }} />
+                                )}
                             {this.state.itemSelected === item.listName &&
-                                <View style={{ borderLeftWidth: 6, borderLeftColor: '#e81c59', height: 70, position: 'absolute', right: 0, top: 10 }} />
+                                <View style={{ borderLeftWidth: width * 0.015, borderLeftColor: '#e81c59', height: height * 0.09, position: 'absolute', right: 0, top: 10 }} />
                             }
                         </Pressable>
                     )}
-                    keyExtractor = {(item,index)=> index}
+                    keyExtractor={(item, index) => index}
                 />
             </View>
         );

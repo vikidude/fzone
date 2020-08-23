@@ -39,7 +39,7 @@ class Login extends Component {
                         contentContainerStyle={{marginTop: height * 0.15}}
                         renderItem={({item,index}) => (
                             <EllipticalButton
-                                ellipticClick={() => index == 1? this.props.navigation.navigate('Screen1'): this.props.navigation.navigate('Workout')}
+                                ellipticClick={() =>  this.props.navigation.navigate('PersonalScreen')}
                                 width={width * 0.83}
                                 height={height * 0.06}
                                 btnImg= {item.btnImg}

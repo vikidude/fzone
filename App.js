@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AppNavigator from './AppNavigator';
 import { StatusBar, View } from 'react-native';
+import Workout from './app/screens/Workout';
 
 console.disableYellowBox = true
 export default class App extends Component {

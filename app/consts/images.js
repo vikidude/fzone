@@ -13,3 +13,4 @@ export const incline_pushups = require('../assets/incline_pushups.jpg');
 export const knee_pushups = require('../assets/knee_pushups.jpg');
 export const pushups = require('../assets/pushups_2.jpg');
 export const tfz_white_logo = require('../assets/tfz_white.png');
+export const tfz_black_logo = require('../assets/tfz_black.png');

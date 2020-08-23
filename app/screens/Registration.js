@@ -7,6 +7,8 @@ import DropDownPicker from 'react-native-dropdown-picker';
 import Icon from 'react-native-vector-icons/Feather';
 import EllipticalButton from '../components/functionalComponent/EllipticalButton';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import Feather from 'react-native-vector-icons/dist/Feather';
+import FontAwesome5 from 'react-native-vector-icons/dist/FontAwesome5';
 
 const { width, height } = Dimensions.get('screen')
 
@@ -29,6 +31,10 @@ export class PersonalScreen extends React.Component {
         return (
             <View style={[StyleSheet.absoluteFill, { flex: 1, alignItems: 'center', backgroundColor: 'black' }]}>
                 <ScrollView>
+                    <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+                        <Feather name="user" size={width * 0.1} color="white" />
+                        <Text style={{ marginLeft: width * 0.03, fontSize: width * 0.05, textAlign: 'center', marginVertical: height * 0.03, color: 'white' }}>Personal Details</Text>
+                    </View>
                     <View style={{ paddingHorizontal: width * 0.08, paddingBottom: width * 0.15 }}>
                         <CustomTextInput
                             labelSize={width * 0.04}
@@ -141,6 +147,18 @@ export class PersonalScreen extends React.Component {
                             tColor='white'
                         />
                     </View>
+                    <View style={{ marginVertical: width * 0.025, alignItems: 'center' }}>
+                        <EllipticalButton
+                            ellipticClick={() => this.props.navigation.navigate('HealthScreen')}
+                            width={width * 0.9}
+                            height={height * 0.07}
+                            btnImg={''}
+                            btnSize={width * 0.06}
+                            btnText={'Next'}
+                            bgColor='grey'
+                            labelColor='white'
+                        />
+                    </View>
                 </ScrollView>
             </View>
         );
@@ -190,8 +208,12 @@ export class HealthScreen extends React.Component {
             { label: 'Other', value: 'lightly', icon: () => <Icon name="flag" size={18} color="#900" /> },
         ]
         return (
-            <View style={[StyleSheet.absoluteFill, { flex: 1, alignItems: 'center', paddingVertical: height * 0.05, backgroundColor: 'black' }]}>
+            <View style={[StyleSheet.absoluteFill, { flex: 1, alignItems: 'center', backgroundColor: 'black' }]}>
                 <ScrollView>
+                    <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+                        <FontAwesome5 name="stethoscope" size={width * 0.06} color="white" />
+                        <Text style={{ marginLeft: width * 0.03, fontSize: width * 0.05, textAlign: 'center', marginVertical: height * 0.03, color: 'white' }}>Health Details</Text>
+                    </View>
                     <Dpicker
                         items={activityLevel}
                         dValue={this.state.activityLevel}
@@ -248,7 +270,7 @@ export class HealthScreen extends React.Component {
 
                     <View style={{ marginVertical: width * 0.06, alignItems: 'center' }}>
                         <EllipticalButton
-                            ellipticClick={() => this.props.navigation.pop()}
+                            ellipticClick={() => this.props.navigation.navigate('Screen1')}
                             width={width * 0.9}
                             height={height * 0.07}
                             btnImg={''}
