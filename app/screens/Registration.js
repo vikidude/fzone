@@ -10,7 +10,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const { width, height } = Dimensions.get('screen')
 
-class PersonalScreen extends React.Component {
+export class PersonalScreen extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -147,7 +147,7 @@ class PersonalScreen extends React.Component {
     }
 }
 
-class HealthScreen extends React.Component {
+export class HealthScreen extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -248,7 +248,7 @@ class HealthScreen extends React.Component {
 
                     <View style={{ marginVertical: width * 0.06, alignItems: 'center' }}>
                         <EllipticalButton
-                            ellipticClick={() => alert(`btn clicked`)}
+                            ellipticClick={() => this.props.navigation.pop()}
                             width={width * 0.9}
                             height={height * 0.07}
                             btnImg={''}
@@ -325,7 +325,7 @@ const Dpicker = (props) => {
     );
 }
 
-// const Reg = createAppContainer(Regsitration);
+const Reg = createAppContainer(Regsitration);
 
 // const RegFinal = (props) => {
 //     return (
@@ -342,5 +342,3 @@ const Dpicker = (props) => {
 //         </>
 //     );
 // }
-
-export default createAppContainer(Regsitration);

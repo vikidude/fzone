@@ -2,7 +2,7 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation'
 import Login from './app/screens/Login'
 import Screen1 from './app/screens/Screen1'
-import Registration from './app/screens/Registration';
+import {PersonalScreen,HealthScreen} from './app/screens/Registration';
 import Settings from './app/screens/Settings';
 import LeaderBoard from './app/screens/LeaderBoard';
 import Subscription from './app/screens/Subscription';
@@ -16,8 +16,11 @@ const StackNavigator = createStackNavigator({
     Screen1: {
         screen: Screen1
     },
-    Registration: {
-        screen: Registration
+    HealthScreen: {
+        screen: HealthScreen
+    },
+    PersonalScreen: {
+        screen: PersonalScreen
     },
     Settings: {
         screen: Settings

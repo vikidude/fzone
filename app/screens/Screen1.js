@@ -40,7 +40,7 @@ class Screen1 extends Component {
                 </View>
                 <View style={{ marginTop: width * 0.09, paddingHorizontal: width * 0.08 }}>
                     <EllipticalButton
-                        ellipticClick={() => this.props.navigation.navigate('LeaderBoard')}
+                        ellipticClick={() => this.props.navigation.navigate('Settings')}
                         width={width * 0.83}
                         height={height * 0.075}
                         btnImg={''}

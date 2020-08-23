@@ -13,7 +13,7 @@ const Subscription = (props) => {
     ]
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: 'black' }}>
-            <Text style={{ textAlign: 'center', color: 'white' }}>Subscriptions</Text>
+            <Text style={{ textAlign: 'center', color: 'white',marginTop: height *0.01, fontSize: width *0.06, fontWeight:'bold' }}>Subscriptions</Text>
                 {/* <View style={{flexDirection:'row',justifyContent:'space-between', paddingVertical: height * 0.04}}>
                     <Text>14 days</Text>
                     <Text>Free</Text>

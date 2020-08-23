@@ -57,7 +57,20 @@ class Settings extends Component {
                     data={listData}
                     contentContainerStyle = {{ flexGrow:1, marginVertical: 30, paddingLeft: 25,}}
                     renderItem={({ item, index }) => (
-                        <Pressable onPress = {()=>this.setState({itemSelected: item.listName})}
+                        <Pressable onPress = {()=>{
+                            switch(index){
+                                case 0: this.props.navigation.navigate('Workout');
+                                break;
+                                case 1: this.props.navigation.navigate('Subscription');
+                                break;
+                                case 2: this.props.navigation.navigate('PersonalScreen');
+                                break;
+                                case 2: this.props.navigation.navigate('LeaderBoard');
+                                break;
+                                default: this.props.navigation.navigate('HealthScreen');
+                                break;
+                            }
+                            this.setState({itemSelected: item.listName})}}
                             style={{ flexDirection: 'row', flex: 1, justifyContent: 'space-between',paddingTop: 30 }}>
                             <Text style={{ color: this.state.itemSelected === item.listName?'#e81c59':'black', fontSize: 23, }}>
                                 {item.listName}
