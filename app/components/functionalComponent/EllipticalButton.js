@@ -7,7 +7,7 @@ const EllipticalButton = (props) => {
         <TouchableOpacity onPress={()=>props.ellipticClick()} 
             style = {{flexDirection: 'row',backgroundColor: props.bgColor || 'white',height:props.height, width: props.width, 
             paddingHorizontal: props.width * 0.05,alignItems:'center', borderRadius: props.width/2 }}>
-            {props.btnImg !== ''&& <Image source = {{uri: props.btnImg}} 
+            {props.btnImg !== ''&& <Image source = {props.btnImg} 
                 style={{height: 25, width: 25}} />
             }
             {props.showDot &&<View style={{width: 4, height: 4, borderRadius: 2, backgroundColor:'red',left:2}} />}

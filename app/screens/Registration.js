@@ -267,7 +267,7 @@ class HealthScreen extends React.Component {
 PersonalScreen.navigationOptions = {
     tabBarIcon: ({ tintColor, focused }) => (
         <Ionicons
-            name={focused ? 'ios-home' : 'md-home'}
+            name={focused ? 'ios-person' : 'md-person'}
             color={tintColor}
             size={25}
         />
@@ -277,7 +277,7 @@ PersonalScreen.navigationOptions = {
 HealthScreen.navigationOptions = {
     tabBarIcon: ({ tintColor, focused }) => (
         <Ionicons
-            name={focused ? 'ios-person' : 'md-person'}
+            name={focused ? 'ios-health' : 'md-health'}
             color={tintColor}
             size={25}
         />
@@ -293,7 +293,8 @@ const Regsitration = createMaterialTopTabNavigator({
         showIcon: true,
         showLabel: false,
         style: {
-            backgroundColor: 'green'
+            backgroundColor: 'green',
+            // paddingTop: height *0.03
         }
     }
 });
@@ -324,25 +325,22 @@ const Dpicker = (props) => {
     );
 }
 
-const Reg = createAppContainer(Regsitration);
+// const Reg = createAppContainer(Regsitration);
 
-const RegFinal = (props) => {
-    return(
-        <>
-                <View style={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          backgroundColor: 'green',
-          paddingHorizontal: 18,
-          paddingTop: 5,
-        }}>
-          <Ionicons name='ios-camera' size={28} color='white' />
-          <Ionicons name='ios-menu' size={28} color='white' />
-        </View>
-        <Reg />
-        </>
-    );
-}
+// const RegFinal = (props) => {
+//     return (
+//         <>
+//             <View style={{
+//                 flexDirection: 'row',
+//                 alignItems: 'center',
+//                 justifyContent: 'space-between',
+//                 backgroundColor: 'green',
+//                 paddingHorizontal: 18,
+//                 paddingVertical: height * 0.03,
+//             }} />
+//             <Reg />
+//         </>
+//     );
+// }
 
-export default RegFinal;
+export default createAppContainer(Regsitration);

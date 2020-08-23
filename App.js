@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import AppNavigator from './AppNavigator';
 import { StatusBar, View } from 'react-native';
-import Registration from './app/screens/Registration';
-import Icon from 'react-native-vector-icons/dist/Ionicons';
+// import Workout from './app/screens/Workout';
 
 console.disableYellowBox = true
 export default class App extends Component {
@@ -10,7 +9,7 @@ export default class App extends Component {
     return (
       <View style={{ flex: 1 }}>
         <StatusBar backgroundColor='blue' animated={true} barStyle='light-content' />
-        <Registration />
+        <AppNavigator />
       </View>
     )
   }

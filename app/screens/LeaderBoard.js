@@ -4,7 +4,8 @@ import { createAppContainer } from 'react-navigation';
 import { createMaterialTopTabNavigator, MaterialTopTabBar } from 'react-navigation-tabs';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
-
+import { fzone_logo, people_icon_1 } from '../consts/images';
+const primarycolor = '#20d6a5'
 const { width, height } = Dimensions.get('screen')
 
 class Top extends React.Component {
@@ -31,7 +32,7 @@ class Top extends React.Component {
                     )}
                 />
                 <View style={{
-                    width: width, backgroundColor: '#6cf5d0', height: height * 0.07, justifyContent: 'center',
+                    width: width, backgroundColor: primarycolor, height: height * 0.07, justifyContent: 'center',
                     position: 'absolute', bottom: 0,
                 }}>
                     <Text style={{ textAlign: 'center' }}>{items.length} Active Users</Text>
@@ -65,7 +66,7 @@ class Friends extends React.Component {
                     )}
                 />
                 <View style={{
-                    width: width, backgroundColor: '#6cf5d0', height: height * 0.07, justifyContent: 'center',
+                    width: width, backgroundColor: primarycolor, height: height * 0.07, justifyContent: 'center',
                     position: 'absolute', bottom: 0,
                 }}>
                     <Text style={{ textAlign: 'center' }}>{items.length} Active Users</Text>
@@ -100,7 +101,7 @@ class Local extends React.Component {
                     )}
                 />
                 <View style={{
-                    width: width, backgroundColor: '#6cf5d0', height: height * 0.07, justifyContent: 'center',
+                    width: width, backgroundColor: primarycolor, height: height * 0.07, justifyContent: 'center',
                     position: 'absolute', bottom: 0,
                 }}>
                     <Text style={{ textAlign: 'center' }}>{items.length} Active Users</Text>
@@ -116,7 +117,7 @@ const ProfileCard = (props) => {
             <Text style={{ textAlign: 'left', paddingLeft: width * 0.04, fontSize: width * 0.05 }}>
                 #{props.index + 1}
             </Text>
-            <Image source={require('../assets/fzone_logo.png')}
+            <Image source={people_icon_1}
                 style={{
                     width: width * 0.125,
                     height: width * 0.125,
@@ -231,7 +232,7 @@ const LeaderBoard = createMaterialTopTabNavigator({
 }, {
     initialRouteName: 'Top',
     tabBarOptions: {
-        tabStyle:{backgroundColor: '#6cf5d0',},
+        tabStyle:{backgroundColor: primarycolor,},
         labelStyle:{color:'black', fontWeight:'bold'}
     },
     tabBarComponent: props=> <SafeAreaView>

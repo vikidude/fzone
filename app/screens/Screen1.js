@@ -3,6 +3,7 @@ import { View, Text, Dimensions, StyleSheet, Image, TouchableOpacity, } from 're
 import CustomTextInput from '../components/classComponent/CustomTextInput';
 const { width, height } = Dimensions.get('screen');
 import EllipticalButton from '../components/functionalComponent/EllipticalButton';
+import { google_icon, fb_icon, mail_icon, fzone_logo } from '../consts/images';
 
 class Screen1 extends Component {
     constructor(props) {
@@ -14,12 +15,12 @@ class Screen1 extends Component {
     }
 
     render() {
-        const google = 'https://pngmind.com/wp-content/uploads/2019/08/Google-Logo-PNG-Transparent-Background.jpeg'
-        const fb = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQLZcl1IvSqDvrxuIwG3mRlwerRaJ8LuYNECg&usqp=CAU'
-        const mail = 'https://i.pinimg.com/originals/c3/0e/ee/c30eee73a5e3d31b072f555985175165.jpg'
+        const google = google_icon
+        const fb = fb_icon
+        const mail = mail_icon
         return (
             <View style={[StyleSheet.absoluteFill, { flex: 1, backgroundColor: 'lightgrey' }]}>
-                <Image source={require('../assets/fzone_logo.png')}
+                <Image source={fzone_logo}
                     style={{ width: width * 0.6, height: height * 0.3, alignSelf: 'center' }}
                 />
                 <View style={{ paddingHorizontal: width * 0.08, }}>
@@ -39,7 +40,7 @@ class Screen1 extends Component {
                 </View>
                 <View style={{ marginTop: width * 0.09, paddingHorizontal: width * 0.08 }}>
                     <EllipticalButton
-                        ellipticClick={() => this.props.navigation.navigate('Registration')}
+                        ellipticClick={() => this.props.navigation.navigate('LeaderBoard')}
                         width={width * 0.83}
                         height={height * 0.075}
                         btnImg={''}
@@ -69,15 +70,15 @@ class Screen1 extends Component {
                         Continue with
                     </Text>
                     <TouchableOpacity style={{marginLeft: width * 0.03}} onPres={() => console.log()}>
-                        <Image source={{ uri: google }}
+                        <Image source={ google }
                             style={{ height: 25, width: 25 }} />
                     </TouchableOpacity>
                     <TouchableOpacity style={{marginHorizontal: width * 0.035}} onPres={() => console.log()}>
-                        <Image source={{ uri: fb }}
+                        <Image source={ fb }
                             style={{ height: 25, width: 25 }} />
                     </TouchableOpacity>
                     <TouchableOpacity onPres={() => console.log()}>
-                        <Image source={{ uri: mail }}
+                        <Image source={ mail }
                             style={{ height: 25, width: 25 }} />
                     </TouchableOpacity>
                 </View>

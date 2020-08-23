@@ -1,0 +1,15 @@
+export const google_icon = require('../assets/google_icon.jpeg');
+export const fb_icon = require('../assets/fb_icon.png');
+export const fzone_logo = require('../assets/fzone_logo.png');
+export const mail_icon = require('../assets/mail_icon.jpg');
+export const people_icon_1 = require('../assets/people_1.jpg');
+export const people_icon_2 = require('../assets/people_2.jpg');
+export const people_icon_3 = require('../assets/people_3.jpg');
+export const people_icon_4 = require('../assets/people_4.jpg');
+export const people_icon_5 = require('../assets/people_5.jpg');
+export const workout_1 = require('../assets/workout_1.jpg');
+export const jumping_jack = require('../assets/jumping_jack.jpg');
+export const incline_pushups = require('../assets/incline_pushups.jpg');
+export const knee_pushups = require('../assets/knee_pushups.jpg');
+export const pushups = require('../assets/pushups_2.jpg');
+export const tfz_white_logo = require('../assets/tfz_white.png');
