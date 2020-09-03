@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Dimensions, StyleSheet, Image, TouchableOpacity, ScrollView, } from 'react-native';
+import { View, Text, Dimensions, StyleSheet, Image, TouchableOpacity, ScrollView, TextInput, } from 'react-native';
 import CustomTextInput from '../components/classComponent/CustomTextInput';
 const { width, height } = Dimensions.get('screen');
 import EllipticalButton from '../components/functionalComponent/EllipticalButton';
@@ -14,40 +14,60 @@ class Screen1 extends Component {
         }
     }
 
+    inputFocus() {
+        this.textRef.setNativeProps({
+            borderBottomWidth: 2,
+            borderBottomColor: 'skyblue'
+        })
+    }
+    inputBlur() {
+        this.textRef.setNativeProps({
+            borderBottomWidth: 1,
+            borderBottomColor: 'grey'
+        })
+    }
+
     render() {
         const google = google_icon
         const fb = fb_icon
         const mail = mail_icon
         return (
-            <View style={[StyleSheet.absoluteFill, { flex: 1, backgroundColor: 'lightgrey' }]}>
+            <View style={[StyleSheet.absoluteFill, { flex: 1, backgroundColor: '#fcfcfc' }]}>
                 <ScrollView>
                 <View style={{ alignItems: 'center', width: width, marginVertical: height * 0.09 }}>
-                    <Image source={tfz_black_logo} style={{ width: width * 0.6, height: width * 0.25 }} />
+                    <Image source={tfz_black_logo} style={{ width: width * 0.8, height: width * 0.3 }} />
                 </View>
                 <View style={{ paddingHorizontal: width * 0.08, }}>
-                    <Text style={{ position: 'absolute', left: width * 0.08, top: width * 0.12, fontSize: width * 0.05, color: 'black' }}>+91 </Text>
-                    <CustomTextInput
-                        labelSize={width * 0.06}
-                        label=''
-                        inputValue={this.state.input}
-                        placeholder='Enter your phone number'
-                        keyboardType='number-pad'
-                        onInputChange={(text) => this.setState({ input: text })}
-                        width={width * 0.8}
-                        height={height * 0.06}
-                        inputSize={width * 0.05}
-                        mLeft = {width * 0.15}
-                    />
+                    <Text style={{ position: 'absolute', left: width * 0.08, top: width * 0.014, fontSize: width * 0.05, color: 'black' }}>+91 </Text>
+                    <TextInput
+                    ref={component => (this.textRef = component)}
+                    value= {this.state.input}
+                    placeholder = 'Enter your phone number'
+                    keyboardType = 'number-pad'
+                    onChangeText={text => this.setState({ input: text })}
+                    style={{
+                        width: width * 0.7,
+                        height: height * 0.06,
+                        marginLeft: width * 0.095,
+                        fontSize: width * 0.05,
+                        color: 'black',
+                        borderBottomWidth: 1,
+                        borderBottomColor: 'grey',
+                        backgroundColor: '#fcfcfc',
+                    }}
+                    onFocus={() => this.inputFocus()}
+                    onBlur={() => this.inputBlur()}
+                />
                 </View>
                 <View style={{ marginTop: width * 0.09, paddingHorizontal: width * 0.08 }}>
                     <EllipticalButton
-                        ellipticClick={() => this.props.navigation.navigate('Test')}
+                        ellipticClick={() => this.props.navigation.navigate('PersonalScreen')}
                         width={width * 0.83}
                         height={height * 0.075}
                         btnImg={''}
                         btnSize={width * 0.06}
                         btnText={'Continue'}
-                        bgColor='grey'
+                        bgColor='#345eeb'
                         labelColor='white'
                     />
                 </View>
