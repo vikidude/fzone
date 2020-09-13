@@ -16,3 +16,4 @@ export const tfz_white_logo = require('../assets/tfz_white.png');
 export const tfz_black_logo = require('../assets/tfz_black.png');
 export const six_pack =require('../assets/six_pack.jpg');
 export const start_workout = require('../assets/start_workout.jpg');
+export const smiley = require('../assets/smiley.jpg');

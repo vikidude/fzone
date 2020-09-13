@@ -4,21 +4,22 @@ import EllipticalButton from '../components/functionalComponent/EllipticalButton
 const { height, width } = Dimensions.get('screen');
 import Entypo from 'react-native-vector-icons/dist/Entypo';
 import { tfz_black_logo, workout_1, start_workout } from '../consts/images';
+import { font } from '../consts/fontFamily';
 
 export const DuringWorkoutOne = (props) => {
-    const [showSideMenu,updateSideMenu] = React.useState(false);
-    const [timer,setTimer] = React.useState(0);
-    const [pause,setPause] = React.useState(false);
-    React.useEffect(()=>{
-        if(!pause){
-        setTimeout(() => {
-            setTimer(timer+1)
-        }, 1000);
-    }
-    },[timer])
+    const [showSideMenu, updateSideMenu] = React.useState(false);
+    const [timer, setTimer] = React.useState(0);
+    const [pause, setPause] = React.useState(false);
+    React.useEffect(() => {
+        if (!pause) {
+            setTimeout(() => {
+                setTimer(timer + 1)
+            }, 1000);
+        }
+    }, [timer])
     return (
-        <View style={[StyleSheet.absoluteFill, { flex: 1, backgroundColor: !showSideMenu?'white':'rgba(0,0,0,0.5)' , paddingHorizontal: width * 0.04 }]}>
-                {/* <Modal
+        <View style={[StyleSheet.absoluteFill, { flex: 1, backgroundColor: !showSideMenu ? 'white' : 'rgba(0,0,0,0.5)', paddingHorizontal: width * 0.04 }]}>
+            {/* <Modal
                     animationType= 'slide'
                     transparent={true}
                     visible={showSideMenu}
@@ -50,21 +51,21 @@ export const DuringWorkoutOne = (props) => {
                     </TouchableOpacity>
                 </View>
                 <View style={{ marginTop: height * 0.1, alignItems: 'center' }}>
-                    <Text style={{ color: 'black', fontSize: height * 0.035, fontWeight: 'bold' }}>
+                    <Text style={{ color: 'black', fontSize: height * 0.035, fontFamily: font.bold }}>
                         "Jumping Jack"
                 </Text>
                     <View style={{
                         backgroundColor: '#dee609', borderWidth: 1, borderRadius: width * 0.04, marginTop: height * 0.03,
                         paddingVertical: height * 0.22, width: width * 0.8, borderColor: 'lightgrey'
                     }} />
-                    <Text style={{ color: 'black', fontSize: height * 0.03, fontWeight: 'bold', marginVertical: height * 0.06 }}>
+                    <Text style={{ color: 'black', fontSize: height * 0.03, fontFamily: font.bold, marginVertical: height * 0.06 }}>
                         "Sets & reps"
                     </Text>
-                    <Text style={{ color: 'black', fontSize: height * 0.045, fontWeight: 'bold', marginVertical: height * 0.02 }}>
+                    <Text style={{ color: 'black', fontSize: height * 0.045, fontFamily: font.bold, marginVertical: height * 0.02 }}>
                         {timer}
                     </Text>
                     <EllipticalButton
-                        ellipticClick={() => {setPause(!pause); setTimer(timer+1);}}
+                        ellipticClick={() => { setPause(!pause); setTimer(timer + 1); }}
                         width={width * 0.8}
                         height={height * 0.07}
                         btnImg={''}
@@ -94,15 +95,15 @@ export const DuringWorkoutOne = (props) => {
 }
 
 export const DuringWorkoutTwo = (props) => {
-    const [timer,setTimer] = React.useState(0);
-    const [pause,setPause] = React.useState(false);
-    React.useEffect(()=>{
-        if(!pause){
-        setTimeout(() => {
-            setTimer(timer+1)
-        }, 1000);
-    }
-    },[timer])
+    const [timer, setTimer] = React.useState(0);
+    const [pause, setPause] = React.useState(false);
+    React.useEffect(() => {
+        if (!pause) {
+            setTimeout(() => {
+                setTimer(timer + 1)
+            }, 1000);
+        }
+    }, [timer])
     return (
         <View style={[StyleSheet.absoluteFill, { flex: 1, backgroundColor: 'white', paddingHorizontal: width * 0.04 }]}>
             <ScrollView showsVerticalScrollIndicator={false}>
@@ -115,14 +116,14 @@ export const DuringWorkoutTwo = (props) => {
                     </View>
                 </View>
                 <View style={{ alignItems: 'center' }}>
-                    <Text style={{ color: 'black', fontSize: height * 0.09, fontWeight: 'bold', marginVertical: height * 0.2 }}>
+                    <Text style={{ color: 'black', fontSize: height * 0.09, fontFamily: font.regular, marginVertical: height * 0.2 }}>
                         REST
                     </Text>
-                    <Text style={{ color: 'black', fontSize: height * 0.055, fontWeight: 'bold', marginVertical: height * 0.02 }}>
+                    <Text style={{ color: 'black', fontSize: height * 0.055, fontFamily: font.bold, marginVertical: height * 0.02 }}>
                         {timer}
                     </Text>
                     <EllipticalButton
-                        ellipticClick={() => {setPause(!pause);setTimer(timer+1)}}
+                        ellipticClick={() => { setPause(!pause); setTimer(timer + 1) }}
                         width={width * 0.8}
                         height={height * 0.07}
                         btnImg={''}
@@ -184,7 +185,7 @@ export const AddWorkout = (props) => {
             {/* <Text style={{ color: 'black', fontSize: height * 0.07, fontWeight: 'bold' }}>
                 EMPTY
             </Text> */}
-            <Image source={start_workout} style={{width: width, height: height * 0.5}} />
+            <Image source={start_workout} style={{ width: width, height: height * 0.5 }} />
             <EllipticalButton
                 ellipticClick={() => props.navigation.navigate('Planner')}
                 width={width * 0.9}
@@ -207,19 +208,19 @@ export const PostWorkout = (props) => {
             alignItems: 'center', justifyContent: 'center'
         }]}>
             <View style={{ flexDirection: 'row', marginTop: height * 0.12, alignItems: 'center' }}>
-                <Text style={{ fontSize: width * 0.09, fontWeight: 'bold' }}>
+                <Text style={{ fontSize: width * 0.09, fontFamily: font.bold }}>
                     DAY 1
                 </Text>
                 <View style={{
                     backgroundColor: 'greenyellow', width: width * 0.07,
-                    height: width * 0.07, borderRadius: (width * 0.07) / 2,alignItems:'center'
+                    height: width * 0.07, borderRadius: (width * 0.07) / 2, alignItems: 'center'
                 }}>
-                    <Entypo name='check' size = {width * 0.065} color='white' />
+                    <Entypo name='check' size={width * 0.065} color='white' />
                 </View>
             </View>
             <Image source={workout_1} style={{ width: width, height: height * 0.35, marginTop: height * 0.03 }} />
             <Text style={{
-                color: 'white', fontWeight: 'bold', fontSize: width * 0.1, position: 'absolute',
+                color: 'white', fontFamily: font.bold, fontSize: width * 0.1, position: 'absolute',
                 top: height * 0.5
             }}>
                 WELL DONE
@@ -229,12 +230,12 @@ export const PostWorkout = (props) => {
                 paddingLeft: width * 0.08
             }}>
                 <Text style={{
-                    color: 'black', fontWeight: 'bold', fontSize: width * 0.055
+                    color: 'black', fontFamily: font.bold, fontSize: width * 0.05
                 }}>
                     TOTAL CALORIES BURNED: 500
             </Text>
                 <Text style={{
-                    color: 'black', fontWeight: 'bold', fontSize: width * 0.055
+                    color: 'black', fontFamily: font.bold, fontSize: width * 0.05
                 }}>
                     PROGRESS: 1%
             </Text>

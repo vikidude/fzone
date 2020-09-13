@@ -4,6 +4,7 @@ import CustomTextInput from '../components/classComponent/CustomTextInput';
 const { width, height } = Dimensions.get('screen');
 import EllipticalButton from '../components/functionalComponent/EllipticalButton';
 import { fzone_logo, google_icon, fb_icon, tfz_white_logo, six_pack } from '../consts/images';
+import { font } from '../consts/fontFamily';
 
 class Login extends Component {
     constructor(props) {
@@ -27,10 +28,11 @@ class Login extends Component {
         return (
             <ImageBackground source={six_pack}
                 style={{ flex: 1, alignSelf: 'stretch', width: null }}>
-                <Text style={{ textAlign: 'center', fontSize: width * 0.125, color: 'white', marginTop: width * 0.11 }}>
+                {/* <Text style={{ textAlign: 'center', fontSize: width * 0.125,fontFamily: font.black,
+                 color: 'white', marginTop: width * 0.11 }}>
                     WELCOME
-                </Text>
-                <View style={{ alignItems: 'center', width: width, marginTop: height * 0.09 }}>
+                </Text> */}
+                <View style={{ alignItems: 'center', width: width, marginTop: height * 0.15 }}>
                     <Image source={tfz_white_logo} style={{ width: width * 0.55, height: width * 0.2 }} />
                 </View>
                 <View style={{ alignSelf: 'center' }}>
@@ -44,7 +46,7 @@ class Login extends Component {
                                 width={width * 0.83}
                                 height={height * 0.06}
                                 btnImg={item.btnImg}
-                                btnSize={width * 0.045}
+                                btnSize={width * 0.035}
                                 btnText={item.btnText}
                                 labelColor='black'
                                 icon={item.icon}

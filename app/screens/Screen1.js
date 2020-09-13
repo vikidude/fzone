@@ -4,6 +4,7 @@ import CustomTextInput from '../components/classComponent/CustomTextInput';
 const { width, height } = Dimensions.get('screen');
 import EllipticalButton from '../components/functionalComponent/EllipticalButton';
 import { google_icon, fb_icon, mail_icon, fzone_logo, tfz_black_logo } from '../consts/images';
+import { font } from '../consts/fontFamily';
 
 class Screen1 extends Component {
     constructor(props) {
@@ -38,7 +39,8 @@ class Screen1 extends Component {
                     <Image source={tfz_black_logo} style={{ width: width * 0.8, height: width * 0.3 }} />
                 </View>
                 <View style={{ paddingHorizontal: width * 0.08, }}>
-                    <Text style={{ position: 'absolute', left: width * 0.08, top: width * 0.014, fontSize: width * 0.05, color: 'black' }}>+91 </Text>
+                    <Text style={{ position: 'absolute', left: width * 0.08, top: width * 0.02, fontFamily: font.regular,
+                    fontSize: width * 0.05, color: 'black' }}>+91 </Text>
                     <TextInput
                     ref={component => (this.textRef = component)}
                     value= {this.state.input}
@@ -49,11 +51,12 @@ class Screen1 extends Component {
                         width: width * 0.7,
                         height: height * 0.06,
                         marginLeft: width * 0.095,
-                        fontSize: width * 0.05,
+                        fontSize: width * 0.045,
                         color: 'black',
                         borderBottomWidth: 1,
                         borderBottomColor: 'grey',
                         backgroundColor: '#fcfcfc',
+                        fontFamily: font.regular
                     }}
                     onFocus={() => this.inputFocus()}
                     onBlur={() => this.inputBlur()}
@@ -73,11 +76,11 @@ class Screen1 extends Component {
                 </View>
                 <Text style={{ color: 'black', paddingHorizontal: width * 0.07, lineHeight: width * 0.05, fontSize: width * 0.038, marginTop: height * 0.025 }}>
                     By Continuing you agree to the
-                    <Text style={{ color: 'red' }}>
+                    <Text style={{ color: 'red',fontFamily: font.regular }}>
                         {' '}Terms of Services
                     </Text>
                     {' '}and
-                    <Text style={{ color: 'red' }}>
+                    <Text style={{ color: 'red',fontFamily: font.regular }}>
                         {' '}Privacy policy.
                     </Text>
                 </Text>
@@ -87,7 +90,7 @@ class Screen1 extends Component {
                         alignItems: 'center', borderRadius: (width * 0.83) / 2, justifyContent: 'center', marginVertical: height * 0.02, elevation: 4,
                         marginTop: height * 0.08
                     }}>
-                    <Text style={{ fontSize: width * 0.05, color: 'black' }}>
+                    <Text style={{ fontSize: width * 0.05, color: 'black',fontFamily: font.regular }}>
                         Continue with
                     </Text>
                     <TouchableOpacity style={{marginLeft: width * 0.03}} onPres={() => console.log()}>

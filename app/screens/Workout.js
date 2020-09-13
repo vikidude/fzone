@@ -3,6 +3,7 @@ import { View, Text, Image, Dimensions, FlatList, Pressable, TextInput } from 'r
 import { workout_1, jumping_jack, incline_pushups, knee_pushups, pushups } from '../consts/images';
 const { height, width } = Dimensions.get('screen');
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { font } from '../consts/fontFamily';
 
 const Workout = (props) => {
     const exercises = [
@@ -24,15 +25,15 @@ const Workout = (props) => {
                     </Pressable>
                 </View>
                 <View style={{ marginTop: height * 0.025, paddingLeft: width * 0.085 }}>
-                    <Text style={{ color: 'white', fontSize: width * 0.095, fontWeight: 'bold' }}>Day 1</Text>
-                    <Text style={{ color: 'white', fontSize: width * 0.05, fontWeight: 'bold', marginTop: height * 0.02 }}>FULL BODY</Text>
+                    <Text style={{ color: 'white', fontSize: width * 0.095, fontFamily: font.bold }}>Day 1</Text>
+                    <Text style={{ color: 'white', fontSize: width * 0.05, fontFamily: font.bold, marginTop: height * 0.02 }}>FULL BODY</Text>
                 </View>
             </View>
             <View style={{ borderBottomWidth: 1, borderBottomColor: 'lightgrey', flexDirection: 'row', alignItems: 'center', padding: width * 0.05 }}>
                 <View style={{ borderLeftWidth: width * 0.01, borderLeftColor: 'blue', height: height * 0.02, width: width * 0.01, }} />
-                <Text style={{ color: 'black', paddingHorizontal: width * 0.02, fontSize: width * 0.046, fontWeight: 'bold' }}>9 mins</Text>
+                <Text style={{ color: 'black', paddingHorizontal: width * 0.02, fontSize: width * 0.046, fontFamily: font.bold }}>9 mins</Text>
                 <View style={{ width: width * 0.015, height: width * 0.015, backgroundColor: 'black', borderRadius: (width * 0.015) / 2 }} />
-                <Text style={{ color: 'black', fontSize: width * 0.046, paddingHorizontal: width * 0.02, fontWeight: 'bold' }}>11 workouts</Text>
+                <Text style={{ color: 'black', fontSize: width * 0.046, paddingHorizontal: width * 0.02, fontFamily: font.bold }}>11 workouts</Text>
             </View>
             <FlatList
                 data={exercises}
@@ -61,19 +62,19 @@ const Exercise = (props) => {
                     <Ionicons name='md-menu' color='grey' size={width * 0.08} />
                 </Pressable>
                 <Image source={props.exe_img} style={{ width: width * 0.2, height: height * 0.15, resizeMode: 'center' }} />
-                <View style={{ flexDirection: 'column',paddingHorizontal: width *0.02 }}>
-                    <Text style={{marginBottom: height * 0.01,fontSize: width *0.04}}>Days</Text>
-                    <TextInput  
+                <View style={{ flexDirection: 'column', paddingHorizontal: width * 0.02 }}>
+                    <Text style={{ marginBottom: height * 0.01, fontSize: width * 0.04, fontFamily: font.regular }}>Days</Text>
+                    <TextInput
                         value={input}
                         onChangeText={(text) => handleValue(text)}
-                        style={{ borderWidth: 2, width: width * 0.09,textAlign:'center', fontSize: width*0.045 }}
+                        style={{ borderWidth: 2, width: width * 0.09, textAlign: 'center', fontSize: width * 0.045 }}
                     />
                 </View>
                 <View style={{ flexDirection: 'column', justifyContent: 'space-evenly', flexGrow: 1, paddingLeft: width * 0.045 }}>
-                    <Text style={{ fontWeight: 'bold', fontSize: width * 0.045 }}>
+                    <Text style={{ fontSize: width * 0.045, fontFamily: font.bold }}>
                         {props.exe_name}
                     </Text>
-                    <Text style={{ fontSize: width * 0.05, color: 'grey', marginTop: height * 0.02 }}>
+                    <Text style={{ fontSize: width * 0.05, color: 'grey', marginTop: height * 0.02, fontFamily: font.regular }}>
                         {props.exe_time}
                     </Text>
                 </View>

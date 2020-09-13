@@ -1,6 +1,7 @@
 import React from 'react';
 import {View,Text,TouchableOpacity, Image} from 'react-native';
 import FontAwesome from 'react-native-vector-icons/dist/FontAwesome';
+import { font } from '../../consts/fontFamily';
 
 const EllipticalButton = (props) => {
 
@@ -14,7 +15,8 @@ const EllipticalButton = (props) => {
                 style={{height: 25, width: 25}} />
             }
             {props.showDot &&<View style={{width: 4, height: 4, borderRadius: 2, backgroundColor:'red',left:2}} />}
-            <Text style={{fontSize: props.btnSize, textAlign:'center',flexGrow:1,color: props.labelColor || 'white', fontWeight: props.fontWeight || 'normal' }}>
+            <Text style={{fontSize: props.btnSize, textAlign:'center',fontFamily: font.bold,
+            flexGrow:1,color: props.labelColor || 'white', fontWeight: 'normal' || props.fontWeight }}>
                 {props.btnText}
             </Text>
         </TouchableOpacity>

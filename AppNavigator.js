@@ -3,19 +3,30 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation'
 import Login from './app/screens/Login'
 import Screen1 from './app/screens/Screen1'
-import {PersonalScreen,HealthScreen} from './app/screens/Registration';
+import PersonalScreen from './app/screens/Registration';
 import Settings from './app/screens/Settings';
+import SingleLeaderBoard from './app/screens/SingleLeaderBoard';
 import LeaderBoard from './app/screens/LeaderBoard';
 import Subscription from './app/screens/Subscription';
 import Workout from './app/screens/Workout';
 import Home from './app/screens/Home';
 import Test from './app/screens/Test';
 import Test1 from './app/screens/Test1';
-import {Planner,FinalStep,ChoosePlan,SeniorCitizenPlan} from './app/screens/PlanSteps';
+import Planner,{SeniorCitizenPlan} from './app/screens/PlanSteps';
+import FinalStep from './app/screens/FinalStep';
+import ChoosePlan from './app/screens/ChoosePlan';
 import {DuringWorkoutOne,DuringWorkoutTwo,SideMenu,AddWorkout,PostWorkout} from './app/screens/Test2';
-import {Welcome,TFZ} from './app/screens/Test3';
+import Welcome from './app/screens/Test3';
 import { createDrawerNavigator } from 'react-navigation-drawer';
-import {View,Text} from 'react-native';
+import {View,ActivityIndicator, Dimensions} from 'react-native';
+import Profile from './app/screens/Profile';
+import FoodPlanSelect from './app/screens/FoodPlanSelect';
+import FoodPlan from './app/screens/FoodPlan';
+import Feedback from './app/screens/Feedback';
+import { store, persistor } from './app/store/store';
+import { PersistGate } from 'redux-persist/integration/react';
+import { Provider } from 'react-redux';
+import { connect } from 'react-redux';
 
 class DrawerComponent extends React.PureComponent{
     constructor(props){
@@ -46,9 +57,9 @@ const StackNavigator = createStackNavigator({
     Welcome: {
         screen: Welcome
     },
-    TFZ: {
-        screen: TFZ
-    },
+    // TFZ: {
+    //     screen: TFZ
+    // },
     Planner: {
         screen: Planner
     },
@@ -82,9 +93,6 @@ const StackNavigator = createStackNavigator({
     Screen1: {
         screen: Screen1
     },
-    HealthScreen: {
-        screen: HealthScreen
-    },
     PersonalScreen: {
         screen: PersonalScreen
     },
@@ -108,12 +116,49 @@ const StackNavigator = createStackNavigator({
     },
     Test1: {
         screen: Test1
+    },
+    Profile: {
+        screen: Profile
+    },
+    SingleLeaderBoard: {
+        screen: SingleLeaderBoard
+    },
+    FoodPlanSelect: {
+        screen: FoodPlanSelect
+    },
+    FoodPlan: {
+        screen: FoodPlan
+    },
+    Feedback: {
+        screen: Feedback
     }
 }, {
-    initialRouteName: 'Welcome',
+    initialRouteName: 'PersonalScreen',
     headerMode: 'none'
 })
 
 const AppContainer = createAppContainer(StackNavigator);
 
-export default AppContainer;
+class AppNavigator extends React.PureComponent {
+    
+    render() {
+        return(
+            <Provider store={store}>
+            <PersistGate
+              loading={
+                <ActivityIndicator
+                  size="large"
+                  color="#eb0073"
+                  style={{marginTop: (Dimensions.get('screen').height)/2}}
+                />
+              }
+              persistor={persistor}>
+              <AppContainer  />
+            </PersistGate>
+          </Provider>
+        ) 
+    }
+}
+
+
+export default AppNavigator;

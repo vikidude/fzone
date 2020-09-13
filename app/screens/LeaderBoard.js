@@ -1,12 +1,15 @@
 import React from 'react';
-import { Text, View, Dimensions, FlatList, StyleSheet, Image } from 'react-native';
+import { Text, View, Dimensions, FlatList, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createMaterialTopTabNavigator, MaterialTopTabBar } from 'react-navigation-tabs';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { fzone_logo, people_icon_1 } from '../consts/images';
+import { Colors } from '../consts/colors';
 const primarycolor = '#20d6a5'
 const { width, height } = Dimensions.get('screen')
+import FontAwesome5 from 'react-native-vector-icons/dist/FontAwesome5'
+import { font } from '../consts/fontFamily';
 
 class Top extends React.Component {
     constructor(props) {
@@ -32,10 +35,10 @@ class Top extends React.Component {
                     )}
                 />
                 <View style={{
-                    width: width, backgroundColor: primarycolor, height: height * 0.07, justifyContent: 'center',
+                    width: width, backgroundColor: Colors.green_odd, height: height * 0.07, justifyContent: 'center',
                     position: 'absolute', bottom: 0,
                 }}>
-                    <Text style={{ textAlign: 'center' }}>{items.length} Active Users</Text>
+                    <Text style={{ textAlign: 'center',fontFamily: font.regular }}>{items.length} Active Users</Text>
                 </View>
             </View>
         );
@@ -66,10 +69,10 @@ class Friends extends React.Component {
                     )}
                 />
                 <View style={{
-                    width: width, backgroundColor: primarycolor, height: height * 0.07, justifyContent: 'center',
+                    width: width, backgroundColor: Colors.green_odd, height: height * 0.07, justifyContent: 'center',
                     position: 'absolute', bottom: 0,
                 }}>
-                    <Text style={{ textAlign: 'center' }}>{items.length} Active Users</Text>
+                    <Text style={{ textAlign: 'center',fontFamily: font.regular }}>{items.length} Active Users</Text>
                 </View>
             </View>
         );
@@ -101,10 +104,10 @@ class Local extends React.Component {
                     )}
                 />
                 <View style={{
-                    width: width, backgroundColor: primarycolor, height: height * 0.07, justifyContent: 'center',
+                    width: width, backgroundColor: Colors.green_odd, height: height * 0.07, justifyContent: 'center',
                     position: 'absolute', bottom: 0,
                 }}>
-                    <Text style={{ textAlign: 'center' }}>{items.length} Active Users</Text>
+                    <Text style={{ textAlign: 'center',fontFamily: font.regular }}>{items.length} Active Users</Text>
                 </View>
             </View>
         );
@@ -114,7 +117,7 @@ class Local extends React.Component {
 const ProfileCard = (props) => {
     return (
         <View style={{ flex: 1, flexDirection: 'row', borderBottomWidth: 1, borderBottomColor: 'grey', alignItems: 'center', paddingBottom: width * 0.03 }}>
-            <Text style={{ textAlign: 'left', paddingLeft: width * 0.04, fontSize: width * 0.05 }}>
+            <Text style={{ textAlign: 'left', paddingLeft: width * 0.04, fontSize: width * 0.05,fontFamily: font.regular }}>
                 #{props.index + 1}
             </Text>
             <Image source={people_icon_1}
@@ -127,8 +130,8 @@ const ProfileCard = (props) => {
                     borderColor: "lightgrey", marginHorizontal: width * 0.065
                 }} />
             <View style={{ flexDirection: 'column' }}>
-                <Text style={{ fontSize: width * 0.04 }}>Michelle</Text>
-                <Text style={{ fontSize: width * 0.04, color: 'grey' }}>142 677 stage</Text>
+                <Text style={{ fontSize: width * 0.04,fontFamily: font.regular }}>Michelle</Text>
+                <Text style={{ fontSize: width * 0.04, color: 'grey',fontFamily: font.regular }}>142 677 stage</Text>
             </View>
         </View>
     );
@@ -140,9 +143,15 @@ class CustomTabBar extends React.Component {
   
       const {navigation} = this.props;    
       const routes = navigation.state.routes;
-  
+      console.log(navigation.state.routes)
       return (
-        <SafeAreaView style={{backgroundColor: 'blue'}}>
+        <SafeAreaView style={{backgroundColor: Colors.green_odd}}>
+          <View style={{flexDirection:'row',marginVertical: height * 0.02}}>
+            <TouchableOpacity onPress={()=>{}}>
+          <FontAwesome5 name = 'bars' size = {width * 0.065} color='white' style={{marginLeft: width * 0.03}} />
+          </TouchableOpacity>
+          <Text style={{color:'white', marginLeft: width * 0.03, fontSize: width * 0.055,fontFamily: font.regular}}>LEADERBOARD</Text>
+          </View>
           <View style={styles.container}>
             <FlatList
                 data = {routes}
@@ -152,7 +161,7 @@ class CustomTabBar extends React.Component {
                   <CustomTabBarIcon
                     key={item.key}
                     routeName={item.routeName}
-                    onPress={() => this.navigationHandler(index)}
+                    onPress={() => this.navigationHandler(item.routeName)}
                     focused={navigation.state.index === index}
                     index={index}
                   />
@@ -174,14 +183,16 @@ class CustomTabBar extends React.Component {
     container: {
       flexDirection: 'row',
       alignContent: 'center',
-      height: 56,
-      width: '100%',
+      height: height * 0.07,
+      width: width,
       paddingHorizontal: 16,
-      backgroundColor: 'blue',
+      backgroundColor: Colors.green_odd,
     },
     tabBarItem: {
       flex: 1,
-      alignItems: 'center'
+      alignItems: 'center',
+      width: width * 0.3,
+      fontSize: 25
     }
   });
 
@@ -209,19 +220,20 @@ class CustomTabBar extends React.Component {
   
     container: {
       flex: 1,
-      alignItems: 'center'
+      alignItems: 'center',
     },
     active: {
-      borderTopWidth: 3,
-      borderColor: 'white'
+      borderBottomWidth: 3,
+      borderColor: Colors.dark_blue
     },
     inactive: {
-      borderTopWidth: 3,
-      borderColor: 'blue'  
+      // borderBottomWidth: 3,
+      // borderColor: 'blue'  
     },
     textStyle: {
       color: 'white',
-      fontSize: 13
+      fontSize: width * 0.05,
+      fontFamily: font.regular
     }
   });
 
@@ -232,12 +244,12 @@ const LeaderBoard = createMaterialTopTabNavigator({
 }, {
     initialRouteName: 'Top',
     tabBarOptions: {
-        tabStyle:{backgroundColor: primarycolor,},
+        tabStyle:{backgroundColor: Colors.green_odd,},
         labelStyle:{color:'black', fontWeight:'bold'}
     },
     tabBarComponent: props=> <SafeAreaView>
-    {/* <CustomTabBar {...props} /> */}
-    <MaterialTopTabBar {...props} />
+    <CustomTabBar {...props} />
+    {/* <MaterialTopTabBar {...props} /> */}
   </SafeAreaView>
 });
 

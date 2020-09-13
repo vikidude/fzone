@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { View, Text, TextInput,Dimensions } from 'react-native';
-const {height,width} = Dimensions.get('screen');
+import { View, Text, TextInput, Dimensions } from 'react-native';
+import { font } from '../../consts/fontFamily';
+const { height, width } = Dimensions.get('screen');
 
 export default class CustomTextInput extends Component {
 
@@ -29,14 +30,14 @@ export default class CustomTextInput extends Component {
     render() {
         return (
             <View style={{}}>
-                    {/* <Text style={{ color: this.props.lColor || 'grey',fontSize: this.props.labelSize,marginVertical: height * 0.02 }} ref={component => (this.labelRef = component)}>
+                {/* <Text style={{ color: this.props.lColor || 'grey',fontSize: this.props.labelSize,marginVertical: height * 0.02 }} ref={component => (this.labelRef = component)}>
                     {this.props.label}
                 </Text> */}
                 <TextInput
                     ref={component => (this.textRef = component)}
                     value={this.props.inputValue}
-                    placeholder = {this.props.placeholder}
-                    keyboardType =  {this.props.keyboardType}
+                    placeholder={this.props.placeholder}
+                    keyboardType={this.props.keyboardType}
                     onChangeText={text => this.props.onInputChange(text)}
                     style={{
                         width: this.props.width,
@@ -47,8 +48,9 @@ export default class CustomTextInput extends Component {
                         borderWidth: 1,
                         borderColor: 'grey',
                         backgroundColor: '#fcfcfc',
-                        borderRadius: (this.props.height)/2,
-                        paddingLeft: this.props.paddingLeft
+                        borderRadius: (this.props.height) / 2,
+                        paddingLeft: this.props.paddingLeft,
+                        fontFamily: font.regular
                     }}
                     onFocus={() => this.inputFocus()}
                     onBlur={() => this.inputBlur()}
