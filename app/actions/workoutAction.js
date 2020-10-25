@@ -1,18 +1,27 @@
 import workoutTypes from '../reducers/workout/types';
 import Axios from 'axios';
 
+export const setWorkoutDay = (day) => {
+    return (dispatch) => {
+        dispatch({
+            type: workoutTypes.SET_WORKOUT_DAY,
+            workout_day: day,
+        });
+    };
+};
+
 export const getActivityDetails = () => {
     return (dispatch, getState) => {
         Axios.get('http://ttci-demo.com:10/tfz_web/tfzapi_user/public/api/mobile/personel_details')
             .then(data => {
-                console.log('Activity & Medical data: ', data.data);
+                // console.log('Activity & Medical: ', data.data);
                 dispatch({
                     type: workoutTypes.GET_ACTIVITY_AND_MEDICAL_DETAILS_SUCCESS,
                     activityMedicalData: data.data,
                 });
             })
             .catch(error => {
-                console.log('Login Error Message: ', JSON.stringify(error));
+                console.log('Activity get Error Message: ', JSON.stringify(error));
                 dispatch({
                     type: workoutTypes.GET_ACTIVITY_AND_MEDICAL_DETAILS_FAILED,
                     errorMessage: error,
@@ -23,7 +32,7 @@ export const getActivityDetails = () => {
 
 export const getWorkoutFrequency = () => {
     return (dispatch, getState) => {
-        Axios.get('http://ttci-demo.com:10/tfz_web/tfzapi_user/public/api/mobile/yourplanner')
+        Axios.get('http://ttci-uat.com:10/tfz_web/tfzapi_user/public/api/mobile/yourplanner')
             .then(data => {
                 console.log('Workout freq: ', data.data);
                 dispatch({
@@ -55,7 +64,7 @@ export const getWorkoutTypes = () => {
                 console.log('Workout types get Error Message: ', JSON.stringify(error));
                 dispatch({
                     type: workoutTypes.GET_WORKOUT_TYPE_FAILED,
-                    errorMessage: error,
+                    errorMessage: 'Get activity error',
                 });
             });
     };

@@ -1,104 +1,137 @@
 import React from 'react';
-import { View, Text, StyleSheet, Dimensions, Image, ScrollView } from 'react-native';
+import { View, StyleSheet, Image, ScrollView, TouchableOpacity,Text } from 'react-native';
 import { workout_1, tfz_black_logo } from '../consts/images';
 import EllipticalButton from '../components/functionalComponent/EllipticalButton';
 import { Colors } from '../consts/colors';
-const { height, width } = Dimensions.get('screen');
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { NavigationEvents } from 'react-navigation';
 
 const Home = (props) => {
+    const [duration,setDuraction] = React.useState(null);
+    const[play,setPlay] = React.useState(false);
+    const [pause,setPause] = React.useState(false);
+    // React.useEffect(()=>{
+    //     console.log('hitted',pause)
+    //     if(duration !== null && duration > -1 && play && !pause){
+    //         setTimeout(() => {
+    //             setDuraction(duration-1);
+    //         }, 1000);
+    //         if(duration === 0){
+    //             console.log('hi')
+    //             setDuraction(null);
+    //             // props.navigation.push('Profile')
+    //         }
+    //     }
+    // },[duration])
     return (
         <View style={[StyleSheet.absoluteFill, { flex: 1, backgroundColor: 'white' }]}>
+            {/* <NavigationEvents
+                onWillFocus={()=>setDuraction(null)}
+            />
+            <TouchableOpacity onPress={()=>[setDuraction(25),setPlay(true)]}>
+                <Text>Start Timer</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={()=>{
+                setPause(!pause)
+                console.log('pause: ',pause,play)
+                if(pause && duration> -1){
+                    setDuraction(duration-1)
+                }
+            }}>
+                <Text>Pause</Text>
+            </TouchableOpacity>
+            <Text style={{color:'black',textAlign:'center'}}>{duration}</Text> */}
             <ScrollView>
-                <Image source={workout_1} style={{ width: width, height: height * 0.35 }} />
+                <Image source={workout_1} style={{ width: wp('100%'), height: hp('35%') }} />
                 <Image source={tfz_black_logo} style={{
-                    width: width * 0.6, height: height * 0.12, position: 'absolute',
-                    top: height * 0.13, left: width * 0.2
+                    width: wp('60%'), height: hp('13%'), position: 'absolute',
+                    top: hp('13%'), left: wp('20%')
                 }} />
-                <View style={{ marginVertical: width * 0.045, alignItems: 'center' }}>
+                <View style={{ marginVertical: wp('5%'), alignItems: 'center' }}>
                     <EllipticalButton
-                        ellipticClick={() => props.navigation.navigate('SeniorCitizenPlan')}
-                        width={width * 0.9}
-                        height={height * 0.20}
+                        ellipticClick={() => props.navigation.push('SeniorCitizenPlan')}
+                        width={wp('90%')}
+                        height={hp('20%')}
                         btnImg={''}
-                        btnSize={width * 0.06}
+                        btnSize={wp('6%')}
                         btnText={'WORKOUTS'}
                         bgColor='white'
                         labelColor='grey'
-                        borderRadius={width * 0.06}
+                        borderRadius={wp('5%')}
                     />
                 </View>
                 <View style={{ alignItems: 'center' }}>
                     <EllipticalButton
                         ellipticClick={() => props.navigation.navigate('FoodPlan')}
-                        width={width * 0.9}
-                        height={height * 0.14}
+                        width={wp('90%')}
+                        height={hp('15%')}
                         btnImg={''}
-                        btnSize={width * 0.06}
+                        btnSize={wp('6%')}
                         btnText={'FOOD CHART'}
                         bgColor= {Colors.purple}
                         labelColor='white'
-                        borderRadius={width * 0.06}
+                        borderRadius={wp('5%')}
                     />
                 </View>
-                <View style={{ marginVertical: width * 0.045, alignItems: 'center', flexDirection: 'row', justifyContent: 'space-around', }}>
+                <View style={{ marginVertical: wp('5%'), alignItems: 'center', flexDirection: 'row', justifyContent: 'space-around', }}>
                     <EllipticalButton
                         ellipticClick={() => props.navigation.navigate('SingleLeaderBoard')}
-                        width={width * 0.45}
-                        height={height * 0.13}
+                        width={wp('45%')}
+                        height={hp('13.5%')}
                         btnImg={''}
-                        btnSize={width * 0.04}
+                        btnSize={wp('4%')}
                         btnText={'LEADERBOARD'}
                         bgColor= {Colors.navy_blue}
                         labelColor='white'
-                        borderRadius={width * 0.06}
+                        borderRadius={wp('5%')}
                     />
                     <EllipticalButton
-                        ellipticClick={() => props.navigation.navigate('Profile')}
-                        width={width * 0.45}
-                        height={height * 0.13}
+                        ellipticClick={() => props.navigation.push('Profile')}
+                        width={wp('45%')}
+                        height={hp('13.5%')}
                         btnImg={''}
-                        btnSize={width * 0.04}
+                        btnSize={wp('4%')}
                         btnText={'PROFILE'}
                         bgColor= {Colors.light_green}
                         labelColor='white'
-                        borderRadius={width * 0.05}
+                        borderRadius={wp('5%')}
                     />
                 </View>
-                <View style={{ marginVertical: width * 0.01, alignItems: 'center',flexDirection:'row', justifyContent:'space-around', }}>
+                <View style={{ marginVertical: wp('1.5%'), alignItems: 'center',flexDirection:'row', justifyContent:'space-around', }}>
                 <EllipticalButton
                     ellipticClick={() => props.navigation.navigate('Feedback')}
-                    width={width * 0.45}
-                    height={height * 0.13}
+                    width={wp('45%')}
+                    height={hp('13.5%')}
                     btnImg={''}
-                    btnSize={width * 0.04}
+                    btnSize={wp('4%')}
                     btnText={'SUPPORT'}
                     bgColor= {Colors.light_yellow}
                     labelColor='white'
-                    borderRadius = {width * 0.06}
+                    borderRadius={wp('5%')}
                 />
                 <EllipticalButton
-                    ellipticClick={() => props.navigation.navigate('Settings')}
-                    width={width * 0.45}
-                    height={height * 0.13}
+                    ellipticClick={() => props.navigation.push('Settings')}
+                    width={wp('45%')}
+                    height={hp('13.5%')}
                     btnImg={''}
-                    btnSize={width * 0.04}
+                    btnSize={wp('4%')}
                     btnText={'SETTINGS'}
                     bgColor= {Colors.medium_red}
                     labelColor='white'
-                    borderRadius = {width * 0.05}
+                    borderRadius={wp('5%')}
                 />
             </View>
-            <View style={{alignItems:'center', marginVertical: height * 0.03}}>
+            <View style={{alignItems:'center', marginVertical: hp('4%')}}>
             <EllipticalButton
                     ellipticClick={() => props.navigation.navigate('Login')}
-                    width={width * 0.9}
-                    height={height * 0.07}
+                    width={wp('90%')}
+                    height={hp('7.5%')}
                     btnImg={''}
-                    btnSize={width * 0.04}
+                    btnSize={wp('5%')}
                     btnText={'Logout'}
                     bgColor= {Colors.dark_blue}
                     labelColor='white'
-                    borderRadius = {width * 0.06}
+                    borderRadius={wp('5%')}
                 />
                 </View>
             </ScrollView>
@@ -107,53 +140,3 @@ const Home = (props) => {
 }
 
 export default Home;
-
-// import React, { Component } from 'react';
-// import { View, Text, StyleSheet, ScrollView, Dimensions, FlatList } from 'react-native';
-// import PlanCard from '../components/functionalComponent/PlanCard';
-
-// const { height, width } = Dimensions.get('screen');
-
-// class Home extends Component {
-//     constructor(props) {
-//         super(props);
-//         this.state = {
-
-//         }
-//     }
-
-//     render() {
-//         return (
-//             <View style={[{ flex: 1, paddingLeft: width * 0.035, alignItems: 'center', backgroundColor: 'red' }]}>
-//                 <ScrollView>
-//                     <Text style={{ color: 'white', fontSize: height * 0.05, textAlign: 'center', paddingVertical: height * 0.015 }}>
-//                         Home
-//                     </Text>
-//                     <FlatList
-//                         data={[1, 2, 3]}
-//                         horizontal={true}
-//                         showsHorizontalScrollIndicator={false}
-//                         renderItem={({ item, index }) => (
-//                             <PlanCard
-//                                 height={height * 0.4}
-//                                 width={width * 0.9}
-//                                 planImg={'https://i.ytimg.com/vi/clFVVaXyLio/hqdefault.jpg'}
-//                                 planName={'Relax Yoga: Spine & Breathwork'}
-//                                 planLimit={'1h'}
-//                                 btnSize={width * 0.04}
-//                                 planBy={'by Anvita Dixit | BEGINNER'}
-//                                 timeSlots={[{ time: '07:00 PM', showDot: true }, { time: '08:00 PM', showDot: false }, { time: 'MORE', showDot: false }]}
-//                             />
-//                         )}
-//                         ItemSeparatorComponent={() => (
-//                             <View style={{ marginLeft: width * 0.03 }} />
-//                         )}
-//                         keyExtractor={(item, index) => index}
-//                     />
-//                 </ScrollView>
-//             </View>
-//         );
-//     }
-// }
-
-// export default Home;

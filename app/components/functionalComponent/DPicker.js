@@ -19,7 +19,7 @@ const Dpicker = (props) => {
                 items={props.items}
                 defaultValue={props.dValue}
                 placeholder={props.placeholder}
-                placeholderStyle={{color:'grey', fontSize: width * 0.045,}}
+                placeholderStyle={{color:'grey', fontSize: props.fontSize ||width * 0.045,}}
                 containerStyle={{ height: height * 0.06, width: width * 0.9 }}
                 style={{
                     backgroundColor: '#fafafa', borderTopLeftRadius: radius, borderTopRightRadius: radius,
@@ -32,7 +32,7 @@ const Dpicker = (props) => {
                 onChangeItem={(item) => props.changeDValue(item)}
             />
             <Text style={{color:'black', position:'absolute', left: width * 0.03,
-                 top: height * 0.01, fontSize: width * 0.045,fontFamily: font.regular}}>{props.dValue}</Text>
+                 top: height * 0.01, fontSize: props.fontSize || width * 0.045,fontFamily: font.regular}}>{props.dValue}</Text>
         </View>
     );
 }

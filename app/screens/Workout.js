@@ -40,7 +40,7 @@ const Workout = (props) => {
                 renderItem={({ item, index }) => (
                     <Exercise
                         {...item}
-                        goThere={() => props.navigation.navigate('Test1', { ...item })}
+                        goThere={() => props.navigation.navigate('Rest', { ...item })}
                     />
                 )}
                 keyExtractor={(item, index) => index}

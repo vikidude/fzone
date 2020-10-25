@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "42551297838",
+    "firebase_url": "https://tfz-fzone.firebaseio.com",
+    "project_id": "tfz-fzone",
+    "storage_bucket": "tfz-fzone.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:42551297838:android:af8cb58ddb98818f7cdcbf",
+        "android_client_info": {
+          "package_name": "com.fzone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "42551297838-lmmhmb16madqnbipfr3une3n5jubr9rg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDs5rxPnN6BnPzGt3lBGHJ4J7yG80wsCG0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "42551297838-lmmhmb16madqnbipfr3une3n5jubr9rg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

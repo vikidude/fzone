@@ -7,15 +7,33 @@ let initialState = {
     goals: [],
     workoutType: [],
     workoutPlans: [],
+    workout_day: null,
+    alternate_exercise: [],
+    isAlternateSet: false,
+    picked_alternate: null,
 };
 
 const WorkoutReducer = (state = initialState, actions) => {
     switch (actions.type) {
+
+        case workoutTypes.ALTERNATE_PICKED:
+            const { isAlternateSet, picked_alternate } = actions;
+            // console.log('caled: ',isAlternateSet)
+            return { ...state, picked_alternate, isAlternateSet };
+
+        case workoutTypes.SET_ALTERNATE_EXERCISE:
+            const { alternate_exercise } = actions;
+            return { ...state, alternate_exercise };
+
+        case workoutTypes.SET_WORKOUT_DAY:
+            const { workout_day } = actions;
+            return { ...state, workout_day };
+            
         case workoutTypes.GET_ACTIVITY_AND_MEDICAL_DETAILS_STARTED:
-            return { ...state, activityLoading:true,activityMedicalData:[] };
+            return { ...state, activityLoading: true, activityMedicalData: [] };
         case workoutTypes.GET_ACTIVITY_AND_MEDICAL_DETAILS_SUCCESS:
             const { activityMedicalData } = actions;
-            return { ...state, activityMedicalData,activityLoading:false };
+            return { ...state, activityMedicalData, activityLoading: false };
         case workoutTypes.GET_WORKOUT_FREQUENCY_SUCCESS:
             const { workoutFreqData } = actions;
             return {

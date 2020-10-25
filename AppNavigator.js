@@ -1,51 +1,49 @@
-import React, {Component} from 'react';
+import React from 'react';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation'
 import Login from './app/screens/Login'
-import Screen1 from './app/screens/Screen1'
-import PersonalScreen from './app/screens/Registration';
+import MobileNumberAuth from './app/screens/MobileNumberAuth'
+import Registration from './app/screens/Registration';
 import Settings from './app/screens/Settings';
 import SingleLeaderBoard from './app/screens/SingleLeaderBoard';
 import LeaderBoard from './app/screens/LeaderBoard';
 import Subscription from './app/screens/Subscription';
 import Workout from './app/screens/Workout';
 import Home from './app/screens/Home';
-import Test from './app/screens/Test';
-import Test1 from './app/screens/Test1';
-import Planner,{SeniorCitizenPlan} from './app/screens/PlanSteps';
+import BMICalculation from './app/screens/BMICalculation';
+import Rest from './app/screens/Rest';
+import YourPlanner from './app/screens/YourPlanner'
+import SeniorCitizenPlan from './app/screens/SeniorCitizenPlan';
 import FinalStep from './app/screens/FinalStep';
 import ChoosePlan from './app/screens/ChoosePlan';
-import {DuringWorkoutOne,DuringWorkoutTwo,SideMenu,AddWorkout,PostWorkout} from './app/screens/Test2';
-import Welcome from './app/screens/Test3';
+import DuringWorkoutOne from './app/screens/WorkoutSteps';
+import WorkoutRest from './app/screens/WorkoutRest';
+import AddWorkout from './app/screens/AddWorkout';
+import PostWorkout from './app/screens/PostWorkout';
+import Welcome from './app/screens/Welcome';
 import { createDrawerNavigator } from 'react-navigation-drawer';
-import {View,ActivityIndicator, Dimensions} from 'react-native';
+import { View, ActivityIndicator } from 'react-native';
 import Profile from './app/screens/Profile';
 import FoodPlanSelect from './app/screens/FoodPlanSelect';
 import FoodPlan from './app/screens/FoodPlan';
 import Feedback from './app/screens/Feedback';
-import { store, persistor } from './app/store/store';
-import { PersistGate } from 'redux-persist/integration/react';
-import { Provider } from 'react-redux';
-import { connect } from 'react-redux';
+import AlternateExercises from './app/screens/AlternateExercise';
 
-class DrawerComponent extends React.PureComponent{
-    constructor(props){
-        super(props);
+class DrawerComponent extends React.PureComponent {
+    render() {
+        return (
+            <View style={{ flex: 1 }}>
+                <AlternateExercises />
+            </View>
+        );
     }
-     render() {
-         return (
-             <View style={{ flex: 1 }}>
-                 <SideMenu />
-             </View>
-         );
-     }
- }
-  
+}
+
 const SideNavigator = createDrawerNavigator({
     DuringWorkoutOne: {
         screen: DuringWorkoutOne
     }
-},{
+}, {
     initialRouteName: 'DuringWorkoutOne',
     contentComponent: DrawerComponent,
     drawerPosition: 'left',
@@ -57,11 +55,17 @@ const StackNavigator = createStackNavigator({
     Welcome: {
         screen: Welcome
     },
-    // TFZ: {
-    //     screen: TFZ
-    // },
-    Planner: {
-        screen: Planner
+    Login: {
+        screen: Login,
+    },
+    MobileNumberAuth: {
+        screen: MobileNumberAuth
+    },
+    Registration: {
+        screen: Registration
+    },
+    YourPlanner: {
+        screen: YourPlanner
     },
     FinalStep: {
         screen: FinalStep
@@ -69,35 +73,35 @@ const StackNavigator = createStackNavigator({
     ChoosePlan: {
         screen: ChoosePlan
     },
+    Home: {
+        screen: Home
+    },
     SeniorCitizenPlan: {
         screen: SeniorCitizenPlan
+    },
+    Workout: {
+        screen: Workout
     },
     DuringWorkoutOne: {
         screen: SideNavigator
     },
-    DuringWorkoutTwo: {
-        screen: DuringWorkoutTwo
+    WorkoutRest: {
+        screen: WorkoutRest
     },
-    SideMenu: {
-        screen: SideMenu
-    },
-    AddWorkout: {
-        screen: AddWorkout
+    AlternateExercises: {
+        screen: AlternateExercises
     },
     PostWorkout: {
         screen: PostWorkout
     },
-    Login: {
-        screen: Login,
-    },
-    Screen1: {
-        screen: Screen1
-    },
-    PersonalScreen: {
-        screen: PersonalScreen
+    AddWorkout: {
+        screen: AddWorkout
     },
     Settings: {
         screen: Settings
+    },
+    SingleLeaderBoard: {
+        screen: SingleLeaderBoard
     },
     LeaderBoard: {
         screen: LeaderBoard
@@ -105,60 +109,52 @@ const StackNavigator = createStackNavigator({
     Subscription: {
         screen: Subscription
     },
-    Workout: {
-        screen: Workout
+    BMICalculation: {
+        screen: BMICalculation
     },
-    Home: {
-        screen: Home
-    },
-    Test: {
-        screen: Test
-    },
-    Test1: {
-        screen: Test1
+    Rest: {
+        screen: Rest
     },
     Profile: {
         screen: Profile
     },
-    SingleLeaderBoard: {
-        screen: SingleLeaderBoard
+    FoodPlan: {
+        screen: FoodPlan
     },
     FoodPlanSelect: {
         screen: FoodPlanSelect
-    },
-    FoodPlan: {
-        screen: FoodPlan
     },
     Feedback: {
         screen: Feedback
     }
 }, {
-    initialRouteName: 'PersonalScreen',
+    initialRouteName: 'Welcome',
     headerMode: 'none'
 })
 
 const AppContainer = createAppContainer(StackNavigator);
 
-class AppNavigator extends React.PureComponent {
-    
-    render() {
-        return(
-            <Provider store={store}>
-            <PersistGate
-              loading={
-                <ActivityIndicator
-                  size="large"
-                  color="#eb0073"
-                  style={{marginTop: (Dimensions.get('screen').height)/2}}
-                />
-              }
-              persistor={persistor}>
-              <AppContainer  />
-            </PersistGate>
-          </Provider>
-        ) 
-    }
-}
+// class AppNavigator extends React.PureComponent {
+
+//     render() {
+//         return (
+//             <Provider store={store}>
+//                 <PersistGate
+//                     loading={
+//                         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+//                             <ActivityIndicator
+//                                 size="large"
+//                                 color="blue"
+//                             />
+//                         </View>
+//                     }
+//                     persistor={persistor}>
+//                     <AppContainer />
+//                 </PersistGate>
+//             </Provider>
+//         )
+//     }
+// }
 
 
-export default AppNavigator;
+export default AppContainer;

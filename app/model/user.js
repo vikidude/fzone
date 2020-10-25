@@ -1,4 +1,5 @@
 export let PersonalDetails = {
+    user_id: '',
     email: null,
     name: "",
     address: null,
@@ -44,4 +45,21 @@ export let workout_frequency = {
     updated_at: null,
     deleted_by: null,
     deleted_at: null
+}
+
+export let UserDetails = {
+    user_id: '',
+    workout_frequency_id: '',
+    goal_id: '',
+    workout_plan_id: '',
+    workout_type_id: '',
+    registerdDate: ''
+}
+
+export function resetUserDetails() {
+    UserDetails.user_id ='',
+    UserDetails.workout_frequency_id = '',
+    UserDetails.goal_id = '',
+    UserDetails.workout_plan_id = '';
+    UserDetails.workout_type_id = '';
 }

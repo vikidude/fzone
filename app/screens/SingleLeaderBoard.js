@@ -1,42 +1,42 @@
 import React from 'react';
-import { View, Text, StyleSheet, Dimensions, Image, ScrollView, TouchableOpacity } from 'react-native';
-import { workout_1, tfz_black_logo, people_icon_3 } from '../consts/images';
-import EllipticalButton from '../components/functionalComponent/EllipticalButton';
+import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { people_icon_3 } from '../consts/images';
 import { Colors } from '../consts/colors';
-const { height, width } = Dimensions.get('screen');
 import VerticalBarGraph from '@chartiful/react-native-vertical-bar-graph'
 import { font } from '../consts/fontFamily';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 const SingleLeaderBoard = (props) => {
     return (
         <View style={[StyleSheet.absoluteFill, {
-            flex: 1, backgroundColor: 'white',paddingHorizontal: width * 0.09,justifyContent:'center'
+            flex: 1, backgroundColor: 'white', paddingHorizontal: wp('10%'), justifyContent: 'center'
         }]}>
-            <TouchableOpacity style={{width: width * 0.42, marginBottom: height * 0.02, borderWidth: 1, borderColor: Colors.light_blue}} onPress={()=>props.navigation.navigate('LeaderBoard')}>
-                <Text style={{fontSize: width * 0.04, padding: width * 0.02,fontFamily: font.regular}}>
+            <TouchableOpacity style={{ width: wp('35%'), marginBottom: hp('2%'), borderWidth: 1, borderColor: Colors.light_blue }} onPress={() => props.navigation.navigate('LeaderBoard')}>
+                <Text style={{ fontSize: wp('4.5%'), padding: wp('2%'), fontFamily: font.regular }}>
                     Global LeaderBoard
                 </Text>
             </TouchableOpacity>
             <View style={{
-                backgroundColor: 'black', borderTopLeftRadius: height * 1, borderTopRightRadius: height * 1,
-                alignItems: 'center', borderBottomLeftRadius: height * 1, borderBottomRightRadius: height * 1
+                backgroundColor: 'black', borderTopLeftRadius: hp('100%'), borderTopRightRadius: hp('100%'),
+                alignItems: 'center', borderBottomLeftRadius: hp('100%'), borderBottomRightRadius: hp('100%')
             }}>
                 <View style={{
-                    backgroundColor: Colors.light_green, marginTop: height * 0.032,
-                    paddingHorizontal: width * 0.02
+                    backgroundColor: Colors.light_green, marginTop: hp('4%'),
+                    paddingHorizontal: wp('2%')
                 }}>
                     <Image source={people_icon_3} style={{
-                        width: width * 0.3, height: width * 0.25,
-                        borderRadius: (width * 0.25) / 2
+                        width: wp('25%'), height: wp('25%'),
+                        borderRadius: (wp('25%')) / 2, resizeMode: 'cover'
                     }} />
                 </View>
-                <Text style={{ color: 'white', fontSize: width * 0.045, marginTop: height * 0.015,fontFamily: font.regular }}>This week</Text>
-
+                <Text style={{ color: 'white', fontSize: wp('5%'), marginTop: hp('2%'), fontFamily: font.regular }}>
+                    This week
+                </Text>
                 <VerticalBarGraph
                     data={[0, 0, 45, 25, 0, 0]}
                     labels={['S', 'M', 'T', 'T', 'F', 'S']}
-                    width={width * 0.6}
-                    height={height * 0.17}
+                    width={wp('60%')}
+                    height={hp('20%')}
                     barRadius={5}
                     barWidthPercentage={0.3}
                     barColor='#53ae31'
@@ -45,29 +45,28 @@ const SingleLeaderBoard = (props) => {
                         hasXAxisLabels: false,
                         yAxisLabelStyle: {
                             color: 'white',
-                            fontSize: width * 0.04
+                            fontSize: wp('4%')
                         }
                     }}
                     style={{
-                        marginBottom: height * 0.02,
-                        padding: width * 0.03,
-                        paddingTop: height * 0.03,
+                        marginBottom: hp('3%'),
+                        padding: wp('3%'),
+                        paddingTop: hp('3%'),
                         borderRadius: 20,
-                        // backgroundColor: `#dff4d7`,
-                        width: width * 0.7,
+                        width: wp('70%'),
                     }}
                 />
-                <Text style={{ color: 'white', fontSize: width * 0.05,fontFamily: font.regular }}>
+                <Text style={{ color: 'white', fontSize: wp('5%'), fontFamily: font.regular }}>
                     This week`s avg.
                 </Text>
-                <Text style={{ color: 'white', fontSize: width * 0.05,fontFamily: font.regular }}>
+                <Text style={{ color: 'white', fontSize: wp('5%'), fontFamily: font.regular }}>
                     1260 kcal burnt
                 </Text>
-                <View style={{ marginVertical: height * 0.03 }}>
-                    <Text style={{ color: Colors.light_green, fontSize: width * 0.13,fontFamily: font.regular }}>
+                <View style={{ marginVertical: hp('3%') }}>
+                    <Text style={{ color: Colors.light_green, fontSize: wp('12%'), fontFamily: font.regular }}>
                         803
                     </Text>
-                    <Text style={{ color: Colors.light_green, fontSize: width * 0.05,fontFamily: font.regular }}>
+                    <Text style={{ color: Colors.light_green, fontSize: wp('5%'), fontFamily: font.regular }}>
                         kcal burnt
                     </Text>
                 </View>

@@ -1,103 +1,112 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image, FlatList, Dimensions, Pressable } from 'react-native';
-import Feather from 'react-native-vector-icons/dist/Feather';
-import SimpleLineIcons from 'react-native-vector-icons/dist/SimpleLineIcons';
+import { View, Text, StyleSheet, FlatList, Pressable } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/dist/FontAwesome';
 import FontAwesome5 from 'react-native-vector-icons/dist/FontAwesome5';
 import EllipticalButton from '../components/functionalComponent/EllipticalButton';
 import { Colors } from '../consts/colors';
 import { font } from '../consts/fontFamily';
-const { height, width } = Dimensions.get('screen')
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import Toast from 'react-native-easy-toast';
+import { useSelector } from 'react-redux';
+import { resetUserDetails } from '../model/user';
 
 const Settings = (props) => {
-        const listData = [
-            {
-                listName: 'LeaderBoard',
-                iconName: 'basket'
-            },
-            {
-                listName: 'Active Packs and Subscription',
-                iconName: 'basket'
-            },
-            {
-                listName: 'Medical Records',
-                iconName: 'heart'
-            },
-            {
-                listName: 'Redeem Voucher',
-                iconName: 'basket'
-            },
-            {
-                listName: 'Account',
-                iconName: 'settings'
-            },
-            {
-                listName: 'Support',
-                iconName: 'basket'
-            },
-            {
-                listName: 'Logout',
-                iconName: 'log-out'
-            },
-        ]
-        return (
-            <View style={[StyleSheet.absoluteFill, { flex: 1 }]}>
-                <View style={{
-                    borderBottomColor: 'lightgrey', borderBottomWidth: 1,
-                    padding: width * 0.06, width: width, alignItems: 'center'
-                }}>
-                    {/* <Feather name="user" size={width * 0.15} color="black" />
-                    <View style={{ flexDirection: 'column', marginLeft: width * 0.06, alignSelf: 'center' }}>
-                        <Text style={{ fontSize: width * 0.06, color: 'black', fontWeight: 'bold' }}>Elangovan</Text>
-                        <Text style={{ fontSize: width * 0.04, color: 'red' }}>VIEW PROFILE</Text>
-                    </View> */}
-                    <Text style={{ fontSize: width * 0.06, color: 'black',fontFamily: font.bold, textAlign: 'center' }}>
-                        SETTINGS
-                    </Text>
-                </View>
+    const { authResponse } = useSelector(state => state.AuthReducer);
+    const listData = [
+        {
+            listName: 'LeaderBoard',
+            iconName: 'basket'
+        },
+        {
+            listName: 'Active Packs and Subscription',
+            iconName: 'basket'
+        },
+        {
+            listName: 'Medical Records',
+            iconName: 'heart'
+        },
+        {
+            listName: 'Redeem Voucher',
+            iconName: 'basket'
+        },
+        {
+            listName: 'Account',
+            iconName: 'settings'
+        },
+        {
+            listName: 'Support',
+            iconName: 'basket'
+        },
+        {
+            listName: 'Logout',
+            iconName: 'log-out'
+        },
+    ]
+    const toastRef = React.useRef();
 
-                <FlatList
-                    data={[
-                        { name: 'Personal Details', route: 'PersonalScreen', icon: 'user-circle' },
-                        { name: 'Profile Details', route: 'Profile', icon: 'user-edit' }
-                    ]}
-                    contentContainerStyle={{ margin: width * 0.06, marginTop: height * 0.06 }}
-                    renderItem={({ item, index }) => (
-                        <View style={{
-                            flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'
-                        }}>
-                            <View style={{flexDirection:'row',alignItems:'center'}}>
-                            <FontAwesome5 name= {item.icon} size={width * 0.045} color = {Colors.dark_blue} />
-                            <Text style={{ fontSize: width * 0.06, marginLeft: width * 0.05,fontFamily: font.regular }}>
+    return (
+        <View style={[StyleSheet.absoluteFill, { flex: 1 }]}>
+            <Toast
+                ref={toastRef}
+                style={{ backgroundColor: 'skyblue' }}
+                position='bottom'
+                positionValue={200}
+                fadeInDuration={750}
+                fadeOutDuration={1000}
+                opacity={0.9}
+                textStyle={{ color: 'black' }}
+            />
+            <View style={{
+                borderBottomColor: 'lightgrey', borderBottomWidth: 1,
+                padding: wp('7%'), width: wp('100%'), alignItems: 'center'
+            }}>
+                <Text style={{ fontSize: wp('6%'), color: 'black', fontFamily: font.bold, textAlign: 'center' }}>
+                    SETTINGS
+                    </Text>
+            </View>
+
+            <FlatList
+                data={[
+                    { name: 'Personal Details', route: 'Registration', icon: 'user-circle' },
+                    { name: 'Profile Details', route: 'Profile', icon: 'user-edit' }
+                ]}
+                contentContainerStyle={{ margin: wp('6%'), marginTop: hp('6%') }}
+                renderItem={({ item, index }) => (
+                    <View style={{
+                        flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'
+                    }}>
+                        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                            <FontAwesome5 name={item.icon} size={wp('5%')} color={Colors.dark_blue} />
+                            <Text style={{ fontSize: wp('6%'), marginLeft: wp('5%'), fontFamily: font.regular }}>
                                 {item.name}
                             </Text>
-                            </View>
-                            <Pressable onPress={()=>props.navigation.navigate(item.route,{edit:true})}>
-                            <FontAwesome name='pencil' size={width * 0.06} color = {Colors.dark_blue} />
-                            </Pressable>
                         </View>
-                    )}
-                    ItemSeparatorComponent={() => (
-                        <View style={{ marginTop: height * 0.03 }} />
-                    )}
-                    ListFooterComponentStyle = {{marginTop: height * 0.09}}
-                    ListFooterComponent={() => (
-                        <View style={{ alignSelf: 'center' }}>
-                            <EllipticalButton
-                                ellipticClick={() => {}}
-                                width={width * 0.7}
-                                height={height * 0.07}
-                                btnImg={''}
-                                btnSize={width * 0.06}
-                                btnText={'Delete Account'}
-                                bgColor={Colors.medium_red}
-                                labelColor='white'
-                            />
-                        </View>
-                    )}
-                    keyExtractor={(item, index) => index}
-                />
-                {/* <FlatList
+                        <Pressable onPress={() =>[resetUserDetails(), props.navigation.navigate(item.route, { edit: true, user_id: authResponse?.user_id })]}>
+                            <FontAwesome name='pencil' size={wp('5%')} color={Colors.dark_blue} />
+                        </Pressable>
+                    </View>
+                )}
+                ItemSeparatorComponent={() => (
+                    <View style={{ marginTop: hp('3.5%') }} />
+                )}
+                ListFooterComponentStyle={{ marginTop: hp('8%') }}
+                ListFooterComponent={() => (
+                    <View style={{ alignSelf: 'center' }}>
+                        <EllipticalButton
+                            ellipticClick={() => { }}
+                            width={wp('70%')}
+                            height={hp('7%')}
+                            btnImg={''}
+                            btnSize={wp('6%')}
+                            btnText={'Delete Account'}
+                            bgColor={Colors.medium_red}
+                            labelColor='white'
+                        />
+                    </View>
+                )}
+                keyExtractor={(item, index) => index}
+            />
+            {/* <FlatList
                     data={listData}
                     contentContainerStyle={{ flexGrow: 1, marginVertical: height * 0.03, paddingLeft: width * 0.06, }}
                     showsVerticalScrollIndicator={false}
@@ -129,8 +138,8 @@ const Settings = (props) => {
                     )}
                     keyExtractor={(item, index) => index}
                 /> */}
-            </View>
-        );
+        </View>
+    );
 }
 
 export default Settings;

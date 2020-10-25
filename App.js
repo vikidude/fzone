@@ -1,31 +1,68 @@
 import React, { Component } from 'react';
 import AppNavigator from './AppNavigator';
-import { StatusBar, View, ActivityIndicator, Dimensions } from 'react-native';
-import { Planner, FinalStep, ChoosePlan, SeniorCitizenPlan } from './app/screens/PlanSteps';
-import { DuringWorkoutOne, DuringWorkoutTwo, SideMenu, AddWorkout, PostWorkout } from './app/screens/Test2';
+import { StatusBar, View, ActivityIndicator, Dimensions, Image, Text, LogBox } from 'react-native';
 import { Colors } from './app/consts/colors';
+import NetInfo from "@react-native-community/netinfo";
+const { height, width } = Dimensions.get('screen');
+import { no_internet } from './app/consts/images';
+import { font } from './app/consts/fontFamily';
+import { store, persistor } from './app/store/store';
+import { PersistGate } from 'redux-persist/integration/react';
+import { Provider } from 'react-redux';
 
-XMLHttpRequest = GLOBAL.originalXMLHttpRequest ?
-  GLOBAL.originalXMLHttpRequest :
-  GLOBAL.XMLHttpRequest;
+GLOBAL.XMLHttpRequest = GLOBAL.originalXMLHttpRequest || GLOBAL.XMLHttpRequest;
 
-// fetch logger
-global._fetch = fetch;
-global.fetch = function (uri, options, ...args) {
-  return global._fetch(uri, options, ...args).then((response) => {
-    console.log('Fetch', { request: { uri, options, ...args }, response });
-    return response;
-  });
-};
-
-console.disableYellowBox = true
+LogBox.ignoreAllLogs(true)
 export default class App extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      online: false,
+    }
+  }
+  // componentDidMount() {
+  //   NetInfo.fetch().then(state => {
+  //     if (state.isConnected) {
+  //       this.setState({ online: true });
+  //     } else {
+  //       this.setState({ online: false });
+  //     }
+  //   });
+  //   NetInfo.addEventListener(this.handleConnectivityChange);
+  // }
+
+  // componentWillUnmount() {
+  //   NetInfo.removeEventListener(this.handleConnectivityChange);
+  // }
+
+  handleConnectivityChange = state => {
+    if (state.isConnected) {
+      this.setState({ online: true });
+    } else {
+      this.setState({ online: false });
+    }
+  };
+
   render() {
     return (
-      <View style={{ flexGrow: 1 }}>
-        <StatusBar backgroundColor={Colors.dark_blue} animated={true} barStyle='light-content' />
-        <AppNavigator />
-      </View>
+      <Provider store={store}>
+        <PersistGate
+          loading={
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+              <ActivityIndicator
+                size="large"
+                color="blue"
+              />
+            </View>
+          }
+          persistor={persistor}>
+          <View style={{ flexGrow: 1 }}>
+            <StatusBar backgroundColor={Colors.dark_blue} animated={true} barStyle='light-content' />
+            <AppNavigator />
+          </View>
+        </PersistGate>
+      </Provider>
     )
   }
 }
